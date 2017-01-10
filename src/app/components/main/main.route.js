@@ -2,11 +2,11 @@
   'use strict';
 
   angular
-    .module('feweb')
+    .module('app.main')
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+  function routerConfig($stateProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -14,10 +14,5 @@
         controller: 'MainController',
         controllerAs: 'main'
       });
-
-    $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode(true);
   }
-
-
 })();
