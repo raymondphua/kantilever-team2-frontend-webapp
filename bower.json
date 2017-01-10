@@ -37,5 +37,19 @@
   "resolutions": {
     "jquery": "~2.1.4",
     "angular": "~1.5.3"
-  }
+  },
+  "authors": [
+    "paisan <paisan.rietbroek@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
