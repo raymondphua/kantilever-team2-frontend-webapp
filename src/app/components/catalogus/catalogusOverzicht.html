@@ -1,0 +1,23 @@
+<div ng-init="vm.init()">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Catalogus</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          Filters
+        </div>
+        <div class="col-sm-10">
+          <div class="catalog-categories">
+            <div ng-repeat="categorie in vm.categories" class="category">
+              {{categorie}}
+              {{categorie.name}}
+              <img ng-src="{{categorie.image}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
