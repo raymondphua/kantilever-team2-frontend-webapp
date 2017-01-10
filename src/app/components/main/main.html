@@ -2,6 +2,11 @@
 
   <div>
     <navbar></navbar>
+    <shoppingcart></shoppingcart>
+    <button ng-click="main.click()">add new item</button>
+    <button ng-click="main.clickAgain()">add existing item</button>
+    <button ng-click="main.remove()">remove existing item</button>
+    <h2>{{main.arraySize}}</h2>
   </div>
 
   <div class="jumbotron text-center">
