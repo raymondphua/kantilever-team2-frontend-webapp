@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('feweb')
-    .directive('acmeNavbar', acmeNavbar);
+    .module('app.directives')
+    .directive('navbar', navbar);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function navbar() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/navbar/navbar.html',
+      templateUrl: 'app/components/directives/navbar/navbar.html',
       scope: {
           creationDate: '='
       },
@@ -21,11 +21,11 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController() {
       var vm = this;
 
-      // "vm.creationDate" is available by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+      // vm.categories = CategorieService.getAll();
+      vm.categories = [""];
     }
   }
 

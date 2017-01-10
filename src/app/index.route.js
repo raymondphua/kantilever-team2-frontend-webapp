@@ -6,16 +6,18 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
+        templateUrl: 'app/components/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
       });
 
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
   }
+
 
 })();

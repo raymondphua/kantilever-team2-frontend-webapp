@@ -4,7 +4,5 @@
 
   angular
     .module('feweb')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment);
-
+    .constant('serviceBase', "routeToApiHere");
 })();
