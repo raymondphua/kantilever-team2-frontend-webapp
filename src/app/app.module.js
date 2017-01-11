@@ -16,6 +16,7 @@
       'ui.navbar',
       'app.directives',
       'app.main',
-      'app.catalog']);
+      'app.catalog',
+      'app.shoppingCart']);
 
 })();
