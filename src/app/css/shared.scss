@@ -5,15 +5,13 @@ html {
 
 body{
   font-family: 'Montserrat', sans-serif !important;
-  //background-image: url("/assets/images/background_layer.jpg")!important;
-  //background-size: cover;
-  //background-repeat: no-repeat;
   background: $color_background !important;
   min-height: 100%;
 }
 
 .background-light-transparant{
   background: $color_light_transparant;
+  height:100%;
 }
 
 h1.title{
@@ -28,12 +26,12 @@ h1.title{
   }
 }
 
-
 .text-light{
   color:#C4C4C4;
 }
 
 .breadcrumb{
+  margin-top:15px;
   color: $color_head_text;
   border-radius: 0 !important;
   background-color: rgba(256,256,256, 0.5) !important;
@@ -65,4 +63,15 @@ h1.title{
 
 .radio-container{
   padding:10px;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.container-fluid{
+  height:100%;
 }

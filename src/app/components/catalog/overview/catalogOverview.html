@@ -2,10 +2,10 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1>Catalogus</h1>
+          <h1 class="title">Catalogus</h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-eq-height">
         <div class="col-sm-3">
           <div class="background-light-transparant">
             <!--<div class="radio-container">-->
@@ -56,35 +56,40 @@
                   rz-slider-model="vm.slider.value"
                   rz-slider-options="vm.slider.options"></rzslider>
               </div>
-
-              {{vm.slider.value}}
+              <div class="form-group">
+                <label for="naam">Naam</label>
+                <input type="text" class="form-control" id="naam" ng-model="vm.selectedFilterName" placeholder="Productnaam" ng-change="vm.getProducts()">
+              </div>
             </div>
           </div>
         </div>
         <div class="col-sm-9">
-          <div class="row catalog-categories background-light-transparant">
-            <div class="col-sm-12">
-              <div class="breadcrumb"><a ui-sref="home"><span class="fa fa-home"></span></a> <span class="fa fa-chevron-right"></span> catalog</div>
-            </div>
-
-            <div ng-repeat="category in vm.listItems.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4" ui-sref="catalog-category({categoryName:category.cName, category: category})">
-              <div class="clearfix" ng-if="$index % 3 == 0"></div>
-              <div class="category">
-                <div class="category-image-container">
-                  <div class="category-image" style="background-image: url('{{category.image}}')"></div>
-                </div>
-                <div class="category-name" ng-if="category.price" style="text-align: right">{{category.name}}</div>
-                <div class="product-price" ng-if="category.price" style="float: right">&euro;{{category.price}}</div>
-              </div>
-            </div>
-
-            <div class="col-sm-12">
+          <div class="container-fluid">
+            <div class="row catalog-categories background-light-transparant">
               <div class="col-sm-12">
-                <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
+                <div class="breadcrumb"><a ui-sref="home"><span class="fa fa-home"></span></a> <span class="fa fa-chevron-right"></span> catalog</div>
+              </div>
+
+              <div ng-repeat="product in vm.listItems.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4"
+                   ui-sref="catalog-product({productId: product.id, product: product})">
+                <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                <div class="category">
+                  <div class="category-image-container">
+                    <div class="category-image" style="background-image: url('{{product.imgUrl}}')"></div>
+                  </div>
+                  <div class="category-name" style="text-align: right">{{product.name}}</div>
+                  <div class="product-price" style="float: right">&euro;{{product.price}}</div>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="col-sm-12">
+                  <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </div>
     </div>
 </div>

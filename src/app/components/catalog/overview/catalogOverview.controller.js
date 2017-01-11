@@ -19,7 +19,8 @@
       vm.categories = CatalogService.getAllCategories();
       vm.brands = CatalogService.getAllBrands();
 
-      vm.itemsPerPage = 2;
+      vm.itemsPerPage = 3;
+      vm.maxPrice = null;
 
       vm.setPage = function (pageNo) {
         vm.currentPage = pageNo;
@@ -29,28 +30,45 @@
     };
 
     vm.setPriceSlider = function (data) {
-      var maxPrice = 0;
+      if(vm.maxPrice == null){
+        data.forEach(function (product) {
+          if(product.price > vm.maxPrice){
+            vm.maxPrice = product.price;
+          }
+        });
 
-      data.forEach(function (product) {
-        if(product.price > maxPrice){
-          maxPrice = product.price;
-        }
-      });
-
-      var selectedValue = (vm.slider.value > maxPrice || !vm.slider.value)? maxPrice:vm.slider.value;
-
-      vm.slider = {
-        value: selectedValue,
-        options: {
-          floor: 0,
-          ceil: maxPrice,
-          step: 1
-        }
-      };
+        vm.slider = {
+          value: vm.maxPrice,
+          options: {
+            floor: 0,
+            ceil: vm.maxPrice,
+            step: 1,
+            onEnd: vm.getProducts,
+            translate: function (value) {
+              return '€' + value ;
+            }
+          }
+        };
+      }
+      else{
+        vm.slider.value = (vm.slider.value > vm.maxPrice || !vm.slider.value)? vm.maxPrice:vm.slider.value;
+      }
     };
 
     vm.getProducts = function(){
-      var queryParams = {categories: "", brands: ""};
+
+      var queryParams = getFilterParams();
+
+      CatalogService.getAllProducts(queryParams).$promise.then(function (response) {
+        vm.listItems = response;
+        vm.totalItems = response.length;
+        vm.currentPage = 1;
+        vm.setPriceSlider(response);
+      });
+    };
+
+    var getFilterParams = function () {
+      var queryParams = {categories: "", brands: "", price : null, name: ""};
 
       if(vm.categoryFilters){
         Object.keys(vm.categoryFilters).forEach(function (key) {
@@ -76,12 +94,21 @@
         delete queryParams.brands;
       }
 
-      CatalogService.getAllProducts(queryParams).$promise.then(function (response) {
-        vm.listItems = response;
-        vm.totalItems = response.length;
-        vm.currentPage = 1;
-        vm.setPriceSlider(response);
-      });
+      if(vm.slider && vm.slider.value){
+        queryParams.price = vm.slider.value;
+      }
+      else{
+        delete queryParams.price;
+      }
+
+      if(vm.selectedFilterName){
+        queryParams.name = vm.selectedFilterName;
+      }
+      else{
+        delete queryParams.name;
+      }
+
+      return queryParams;
     };
 
     //Radiobuttons verschillende typen

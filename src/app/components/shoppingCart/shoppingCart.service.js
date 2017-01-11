@@ -7,13 +7,16 @@
 
   /** @ngInject */
 
-  function shoppingCartService() {
+  function shoppingCartService($localStorage) {
     return {
       addToCart: addToCart,
       removeFromCart: removeFromCart
     };
 
     function addToCart(product, cart) {
+      if(!cart){
+        cart = $localStorage.items;
+      }
       var inCartProduct = findProductInCart(product, cart);
       if (inCartProduct != null) {
         inCartProduct.quantity++;
