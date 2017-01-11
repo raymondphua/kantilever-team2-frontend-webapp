@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.directives')
+    .module('app.shoppingCart')
     .service('ShoppingCartService', shoppingCartService);
 
   /** @ngInject */

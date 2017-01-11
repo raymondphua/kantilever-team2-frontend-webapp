@@ -16,6 +16,7 @@
       'toastr',
       'app.directives',
       'app.main',
-      'app.catalogus']);
+      'app.catalogus',
+      'app.shoppingCart']);
 
 })();

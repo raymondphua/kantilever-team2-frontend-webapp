@@ -2,14 +2,14 @@
   'use strict';
 
   angular
-    .module('app.directives')
+    .module('app.shoppingCart')
     .directive('shoppingcart', shoppingCart);
 
   /** @ngInject */
   function shoppingCart() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/directives/shoppingCart/shoppingCart.html',
+      templateUrl: 'app/components/shoppingCart/shoppingCart.html',
       scope: {
       },
       controller: ShoppingCartController,
@@ -26,6 +26,10 @@
       if ($localStorage.items == undefined) {
         $localStorage.items = [];
       }
+
+      //TODO: REMOVE TEST DATA
+      $localStorage.items = [{ id: 1, name: 'test product', description: 'Test description', price: 13.3, quantity: 1},
+                             { id: 2, name: 'test 2', description: 'Test 222222222', price: 33.3, quantity: 1}];
 
       vm.itemCount = updateCartCount();
 
