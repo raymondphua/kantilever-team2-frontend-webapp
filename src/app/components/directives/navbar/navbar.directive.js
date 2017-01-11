@@ -28,7 +28,6 @@
 
       vm.categories = CatalogService.getAllCategories();
       vm.brands = CatalogService.getAllBrands();
-
     }
   }
 })();
