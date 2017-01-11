@@ -13,9 +13,7 @@
       getOne: getOne,
       update: update,
       getProductByProductName: getProductByProductName,
-      getCategoryByCategoryName: getCategoryByCategoryName,
-      getAllCategories: getAllCategories,
-      getAllBrands: getAllBrands
+      getCategoryByCategoryName: getCategoryByCategoryName
     };
 
     function getAllProducts() {
