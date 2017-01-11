@@ -21,12 +21,14 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController() {
+    function NavbarController(CatalogService) {
       var vm = this;
 
-      // vm.categories = CategorieService.getAll();
-      vm.categories = [""];
+      vm.limit = 3;
+
+      vm.categories = CatalogService.getAllCategories();
+      vm.brands = CatalogService.getAllBrands();
+
     }
   }
-
 })();
