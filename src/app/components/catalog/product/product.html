@@ -1,0 +1,35 @@
+<div ng-init="vm.init()">
+  <div class="container">
+    <div class="row background-light-transparant">
+      <div class="col-sm-12">
+        <div class="breadcrumb">
+          <a ui-sref="home"><span class="fa fa-home"></span></a>
+          <span class="fa fa-chevron-right"></span>
+          <a ui-sref="catalog">catalog</a>
+          <span class="fa fa-chevron-right"></span>
+          <a ui-sref="catalog">{{vm.categoryName}}</a>
+          <span class="fa fa-chevron-right"></span>
+          {{vm.product.name}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <h1 class="title white large text-center">{{vm.product.name}}</h1>
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="product-detail">
+            <div class="col-sm-4">
+              <div class="product-detail-image" style="background-image: url('{{vm.product.image}}')"></div>
+            </div>
+            <div class="col-sm-8">
+              <div class="product-detail-description-container">
+                <div class="product-detail-price">&euro;{{vm.product.price}}</div>
+                <div class="product-detail-description">{{vm.product.description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

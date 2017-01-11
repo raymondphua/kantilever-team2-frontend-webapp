@@ -4,5 +4,5 @@
 
   angular
     .module('feweb')
-    .constant('serviceBase', "routeToApiHere");
+    .constant('serviceBase', "http://localhost:11130/");
 })();

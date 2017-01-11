@@ -1,0 +1,49 @@
+<div ng-init="vm.init()">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="background-light-transparant">
+            Filters
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="row catalog-products background-light-transparant">
+            <div class="col-sm-12">
+              <div class="breadcrumb">
+                <a ui-sref="home"><span class="fa fa-home"></span></a>
+                <span class="fa fa-chevron-right"></span>
+                <a ui-sref="catalog">catalog</a>
+                <span class="fa fa-chevron-right"></span>
+                {{vm.category.name}}
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <h1 class="title">{{vm.category.canonicalName}}<span class="text-light">({{vm.products.length}})</span></h1>
+
+            </div>
+            <div class="clearfix"></div>
+            <div ng-repeat="product in vm.products" class="col-sm-4" ui-sref="catalog-category-product({categoryName:vm.category.canonicalName, productName: product.name, product: product})">
+                <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                <div class="product">
+                  <div class="product-image-container">
+                    <div class="product-image" style="background-image: url('{{product.image}}')"></div>
+                  </div>
+                  <div class="product-name" title="{{product.name}}">{{product.name}}</div>
+                  <div class="product-price">&euro;{{product.price}}</div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+        <!--<div class="col-sm-10">-->
+            <!--<div class="catalog-categories background-light-transparant">-->
+              <!--<div ng-repeat="product in vm.products" class="col-sm-4">-->
+                <!--<img ng-src="{{product.image}}" class="img-responsive">-->
+                <!--<div class="category-name">{{product.name}}</div>-->
+              <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+</div>
