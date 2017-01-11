@@ -47,3 +47,17 @@ h1.title{
     }
   }
 }
+
+.pagination{
+  a{
+    border-radius: 0 !important;
+    color:$color_head_text !important;
+  }
+  .pagination-page.active{
+    a{
+      background: $color_head_text !important;
+      border-color: $color_head_text !important;
+      color:white !important;
+    }
+  }
+}
