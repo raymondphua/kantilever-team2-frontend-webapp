@@ -13,6 +13,7 @@
       'ui.router',
       'ui.bootstrap',
       'toastr',
+      'rzModule',
       'app.directives',
       'app.main',
       'app.catalog']);

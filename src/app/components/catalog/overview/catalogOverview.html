@@ -6,24 +6,81 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="background-light-transparant">
-            Filters test
+            <!--<div class="radio-container">-->
+              <!--<div class="radio">-->
+                <!--<label>-->
+                  <!--<input type="radio" name="chickenEgg" value="all" ng-model="vm.selectedHeadType" ng-change="vm.changeSelectedHeadType()">-->
+                  <!--Alle-->
+                <!--</label>-->
+              <!--</div>-->
+              <!--<div class="radio">-->
+                <!--<label>-->
+                  <!--<input type="radio" name="chickenEgg" value="categories" ng-model="vm.selectedHeadType"  ng-change="vm.changeSelectedHeadType()">-->
+                  <!--Categorieën-->
+                <!--</label>-->
+              <!--</div>-->
+              <!--<div class="radio">-->
+                <!--<label>-->
+                  <!--<input type="radio" name="chickenEgg" value="brands" ng-model="vm.selectedHeadType"  ng-change="vm.changeSelectedHeadType()">-->
+                  <!--Merken-->
+                <!--</label>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="filter-container">
+              <div class="filter-category-name">
+                Categorieën
+              </div>
+              <div class="form-group">
+                <label class="checkbox" ng-repeat="category in vm.categories">
+                  <input type="checkbox" name="categoryFilters" ng-model="vm.categoryFilters[category._id]" ng-change="vm.getProducts();">{{category.name}}
+                </label>
+              </div>
+
+              <div class="filter-category-name">
+                Merken
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox" ng-repeat="brand in vm.brands">
+                  <input type="checkbox" name="brandFilters" ng-model="vm.brandFilters[brand._id]" ng-change="vm.getProducts();">{{brand.name}}
+                </label>
+              </div>
+
+              <div class="filter-category-name">
+                Maximale prijs
+              </div>
+              <div>
+                <rzslider
+                  rz-slider-model="vm.slider.value"
+                  rz-slider-options="vm.slider.options"></rzslider>
+              </div>
+
+              {{vm.slider.value}}
+            </div>
           </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <div class="row catalog-categories background-light-transparant">
             <div class="col-sm-12">
               <div class="breadcrumb"><a ui-sref="home"><span class="fa fa-home"></span></a> <span class="fa fa-chevron-right"></span> catalog</div>
             </div>
 
-            <div ng-repeat="category in vm.categories" class="col-sm-4" ui-sref="catalog-category({categoryName:category.cName, category: category})">
+            <div ng-repeat="category in vm.listItems.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4" ui-sref="catalog-category({categoryName:category.cName, category: category})">
               <div class="clearfix" ng-if="$index % 3 == 0"></div>
               <div class="category">
                 <div class="category-image-container">
                   <div class="category-image" style="background-image: url('{{category.image}}')"></div>
                 </div>
-                <div class="category-name">{{category.name}}</div>
+                <div class="category-name" ng-if="category.price" style="text-align: right">{{category.name}}</div>
+                <div class="product-price" ng-if="category.price" style="float: right">&euro;{{category.price}}</div>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="col-sm-12">
+                <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
               </div>
             </div>
           </div>
