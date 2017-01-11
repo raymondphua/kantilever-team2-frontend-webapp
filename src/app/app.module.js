@@ -15,6 +15,6 @@
       'toastr',
       'app.directives',
       'app.main',
-      'app.catalogus']);
+      'app.catalog']);
 
 })();
