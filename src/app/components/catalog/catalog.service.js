@@ -13,7 +13,9 @@
       getOne: getOne,
       update: update,
       getProductByProductName: getProductByProductName,
-      getCategoryByCategoryName: getCategoryByCategoryName
+      getCategoryByCategoryName: getCategoryByCategoryName,
+      getAllCategories: getAllCategories,
+      getAllBrands: getAllBrands
     };
 
     function getAllProducts() {
@@ -44,5 +46,14 @@
     function update(product) {
       return ResourceService(serviceBase + 'products/' + product.id).update(product);
     }
+
+    function getAllCategories() {
+      return ['cat1', 'cat2', 'cat3','cat4', 'cat5','cat6', 'cat7','cat8', 'cat9']
+    }
+
+    function getAllBrands() {
+      return ['brand1', 'brand2','brand3', 'brand4','brand5', 'brand6','brand7', 'brand8']
+    }
+
   }
 })();

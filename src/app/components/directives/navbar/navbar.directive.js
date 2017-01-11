@@ -26,6 +26,28 @@
 
       vm.limit = 3;
 
+      vm.trees = [{
+        name: "Konami",
+        link: "#",
+        subtree: [{
+          name: "Metal Gear",
+          link: "#",
+          subtree: [{
+            name: "Metal Gear",
+            link: "metal-gear"
+          }, {
+            name: "Metal Gear 2: Solid Snake",
+            link: "#"
+          }, {
+            name: "Metal Gear Solid: The Twin Snakes",
+            link: "#"
+          }]
+        }, {
+          name: "divider",
+          link: "#"
+        }]
+      }];
+
       vm.categories = CatalogService.getAllCategories();
       vm.brands = CatalogService.getAllBrands();
     }
