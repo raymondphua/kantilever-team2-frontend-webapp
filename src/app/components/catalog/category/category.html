@@ -23,7 +23,7 @@
             </div>
             <div class="clearfix"></div>
 
-            <div ng-repeat="product in vm.products.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4" ui-sref="catalog-category-product({categoryName:vm.category.canonicalName, productName: product.name, product: product})">
+            <div ng-repeat="product in vm.products.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4" ui-sref="catalog-category-product({categoryName:vm.category.canonicalName, productId: product._id, product: product})">
                 <div class="clearfix" ng-if="$index % 3 == 0"></div>
                 <div class="product">
                   <div class="product-image-container">

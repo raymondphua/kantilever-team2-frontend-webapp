@@ -36,15 +36,14 @@
         }
       })
       .state('catalog-category-product', {
-        url: '/catalog/:categoryName/:productName',
+        url: '/catalog/:categoryName/:productId',
         templateUrl: 'app/components/catalog/product/product.html',
         controller: 'ProductController',
         controllerAs: 'vm',
-        params: {'categoryName': '', 'productName': '', 'product': null},
+        params: {'categoryName': '', 'productId': '', 'product': null},
         resolve: {
           product: function($stateParams, CatalogService) {
             if(!$stateParams.product){
-              console.log("no product given");
               return CatalogService.getProductByProductName($stateParams.productName);
               // return CatalogService.getProductByProductName($stateParams.productName).$promise.then(function(product){
               //   return product;

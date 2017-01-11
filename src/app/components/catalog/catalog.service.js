@@ -7,20 +7,30 @@
 
   /** @ngInject */
 
-  function catalogService(ResourceService, serviceBase, $http) {
+  function catalogService(ResourceService, serviceBase) {
     return {
       getAllProducts: getAllProducts,
       getAllCategories: getAllCategories,
       getProductByProductName: getProductByProductName,
-      getCategoryByCategoryName: getCategoryByCategoryName
+      getCategoryByCategoryName: getCategoryByCategoryName,
+      getCategoryById: getCategoryById,
+      getProductById: getProductById
     };
 
-    function getAllProducts() {
-      return ResourceService(serviceBase + "catalog/products").query();
+    function getAllProducts(queryParams) {
+      return ResourceService(serviceBase + "catalog/products", queryParams).query();
     }
 
-    function getAllCategories() {
-      return ResourceService(serviceBase + "catalog/categories").query();
+    function getAllCategories(queryParams) {
+      return ResourceService(serviceBase + "catalog/categories", queryParams).query();
+    }
+
+    function getCategoryById(categoryId) {
+      return ResourceService(serviceBase + "catalog/categories/"+ categoryId).get();
+    }
+
+    function getProductById(productId) {
+      return ResourceService(serviceBase + "catalog/products/"+ productId).get();
     }
 
     function getProductByProductName(productName) {
@@ -34,9 +44,10 @@
 
     function getCategoryByCategoryName(categoryName) {
       return {
-        name:"Aandrijving en versnelling",
-        image: "/assets/images/categories/aandrijving_en_versnelling/aandrijving_en_versnelling.jpg",
-        canonicalName:"aandrijving-en-versnelling"
+        "_id": "1",
+        "name": "Aandrijving en versnelling",
+        "cName": "aandrijving-en-versnelling",
+        image: "/assets/images/categories/aandrijving_en_versnelling/aandrijving_en_versnelling.jpg"
       };
     }
   }
