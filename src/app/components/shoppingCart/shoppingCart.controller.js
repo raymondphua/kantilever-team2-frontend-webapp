@@ -34,8 +34,10 @@
     }
 
     function refreshCart() {
-      vm.cart = $localStorage.items;
-      calculateTotalPrice();
+      if($localStorage.items){
+        vm.cart = $localStorage.items;
+        calculateTotalPrice();
+      }
     }
   }
 })();
