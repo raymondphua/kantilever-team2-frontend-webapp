@@ -13,10 +13,10 @@
       'ngStorage',
       'ui.router',
       'ui.bootstrap',
-      'toastr',
+      'ui.navbar',
       'app.directives',
       'app.main',
-      'app.catalogus',
+      'app.catalog',
       'app.shoppingCart']);
 
 })();

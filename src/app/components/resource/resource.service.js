@@ -3,7 +3,7 @@
 
   angular
     .module('feweb')
-    .factory(factory);
+    .factory("ResourceService", factory);
 
   /** @ngInject */
   function factory($resource) {
