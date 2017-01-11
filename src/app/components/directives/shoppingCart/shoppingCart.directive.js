@@ -20,13 +20,13 @@
     return directive;
 
     /** @ngInject */
-    function ShoppingCartController($sessionStorage, $rootScope) {
+    function ShoppingCartController($localStorage, $rootScope) {
       var vm = this;
 
-      if ($sessionStorage.items == undefined) {
-        $sessionStorage.items = [];
+      if ($localStorage.items == undefined) {
+        $localStorage.items = [];
       }
-      //$localStorage.items = [];
+
       vm.itemCount = updateCartCount();
 
       $rootScope.$on('cartUpdated', function (event) {
@@ -35,7 +35,7 @@
 
       function updateCartCount() {
         var count = 0;
-        $sessionStorage.items.forEach(function(product) {
+        $localStorage.items.forEach(function(product) {
            count += product.quantity;
         });
 

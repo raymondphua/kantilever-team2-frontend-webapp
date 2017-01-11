@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout) { //ShoppingCartService, $rootScope, $sessionStorage these 3 are needed for shoppingCart
+  function MainController($timeout) { //ShoppingCartService, $rootScope, $localStorage these 3 are needed for shoppingCart
     var vm = this;
 
     vm.awesomeThings = [];
@@ -19,7 +19,7 @@
 
 
     // vm.click = function() {
-    //   $rootScope.$emit('cartUpdated', updateCart({ id: $sessionStorage.items.length + 1, name: "test"}, ShoppingCartService.addToCart)); //addToCart(insert product here)
+    //   $rootScope.$emit('cartUpdated', updateCart({ id: $localStorage.items.length + 1, name: "test"}, ShoppingCartService.addToCart)); //addToCart(insert product here)
     // };
     //
     // vm.remove = function() {
@@ -27,11 +27,11 @@
     // };
     //
     // $rootScope.$on('cartUpdated', function(event) {
-    //   vm.arraySize = $sessionStorage.items.length;
+    //   vm.arraySize = $localStorage.items.length;
     // });
     //
     // function updateCart(product, shoppingCartFunction) {
-    //   shoppingCartFunction(product, $sessionStorage.items);
+    //   shoppingCartFunction(product, $localStorage.items);
     // }
   }
 })();
