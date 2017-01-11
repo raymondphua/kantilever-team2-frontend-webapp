@@ -10,18 +10,17 @@
   function catalogService(ResourceService, serviceBase, $http) {
     return {
       getAllProducts: getAllProducts,
-      getOne: getOne,
-      update: update,
+      getAllCategories: getAllCategories,
       getProductByProductName: getProductByProductName,
       getCategoryByCategoryName: getCategoryByCategoryName
     };
 
     function getAllProducts() {
-      return ResourceService("http://localhost:11130/catalog/product").query();
+      return ResourceService(serviceBase + "catalog/products").query();
     }
 
-    function getOne(number) {
-      return ResourceService(serviceBase + 'products/' + number).get();
+    function getAllCategories() {
+      return ResourceService(serviceBase + "catalog/categories").query();
     }
 
     function getProductByProductName(productName) {
@@ -39,10 +38,6 @@
         image: "/assets/images/categories/aandrijving_en_versnelling/aandrijving_en_versnelling.jpg",
         canonicalName:"aandrijving-en-versnelling"
       };
-    }
-
-    function update(product) {
-      return ResourceService(serviceBase + 'products/' + product.id).update(product);
     }
   }
 })();

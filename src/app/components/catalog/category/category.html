@@ -22,7 +22,8 @@
 
             </div>
             <div class="clearfix"></div>
-            <div ng-repeat="product in vm.products" class="col-sm-4" ui-sref="catalog-category-product({categoryName:vm.category.canonicalName, productName: product.name, product: product})">
+
+            <div ng-repeat="product in vm.products.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4" ui-sref="catalog-category-product({categoryName:vm.category.canonicalName, productName: product.name, product: product})">
                 <div class="clearfix" ng-if="$index % 3 == 0"></div>
                 <div class="product">
                   <div class="product-image-container">
@@ -31,7 +32,10 @@
                   <div class="product-name" title="{{product.name}}">{{product.name}}</div>
                   <div class="product-price">&euro;{{product.price}}</div>
                 </div>
-              </div>
+            </div>
+            <div class="col-sm-12">
+              <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
+            </div>
           </div>
         </div>
 

@@ -7,10 +7,16 @@
 
   /** @ngInject */
 
-  function categoryController($state, category, CatalogService) {
+  function categoryController(category, CatalogService) {
     var vm = this;
 
     vm.init = function () {
+
+      vm.itemsPerPage = 2;
+
+      vm.setPage = function (pageNo) {
+        vm.currentPage = pageNo;
+      };
 
       vm.category = category;
 
@@ -21,7 +27,11 @@
         {name: "Sturmey Archer tandwiel 17 tands", image: "/assets/images/categories/aandrijving_en_versnelling/producten/Sturmey Archer tandwiel 17 tands.jpg", price: 2.95}
       ];
 
-      vm.products = CatalogService.getAllProducts();
+      CatalogService.getAllProducts().$promise.then(function (response) {
+        vm.products = response;
+        vm.totalItems = vm.products.length
+        vm.currentPage = 1;
+      });
     }
 
   }
