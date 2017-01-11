@@ -12,7 +12,8 @@
       getAllProducts: getAllProducts,
       getAllCategories: getAllCategories,
       getProductByProductName: getProductByProductName,
-      getCategoryByCategoryName: getCategoryByCategoryName
+      getCategoryByCategoryName: getCategoryByCategoryName,
+      getAllBrands: getAllBrands
     };
 
     function getAllProducts() {
@@ -21,6 +22,10 @@
 
     function getAllCategories() {
       return ResourceService(serviceBase + "catalog/categories").query();
+    }
+
+    function getAllBrands() {
+      return ResourceService(serviceBase + "catalog/brands").query();
     }
 
     function getProductByProductName(productName) {
