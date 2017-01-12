@@ -13,6 +13,7 @@
       'ngStorage',
       'ui.router',
       'ui.bootstrap',
+      'rzModule',
       'ui.navbar',
       'app.directives',
       'app.main',

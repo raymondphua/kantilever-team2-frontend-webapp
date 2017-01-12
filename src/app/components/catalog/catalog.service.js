@@ -27,16 +27,16 @@
       return ResourceService(serviceBase + "catalog/categories", queryParams).query();
     }
 
+    function getAllBrands(queryParams) {
+      return ResourceService(serviceBase + "catalog/brands", queryParams).query();
+    }
+
     function getCategoryById(categoryId) {
       return ResourceService(serviceBase + "catalog/categories/"+ categoryId).get();
     }
 
     function getProductById(productId) {
       return ResourceService(serviceBase + "catalog/products/"+ productId).get();
-    }
-
-    function getAllBrands() {
-      return ResourceService(serviceBase + "catalog/brands").query();
     }
 
     function getProductByProductName(productName) {

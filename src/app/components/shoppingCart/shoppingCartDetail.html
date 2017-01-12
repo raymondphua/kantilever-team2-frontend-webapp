@@ -1,44 +1,51 @@
 <div class="container">
-  <navbar></navbar>
-  <shoppingcart></shoppingcart>
-  <table id="cart" class="table table-hover table-condensed">
-    <thead>
-    <tr>
-      <th style="width:55%">Product</th>
-      <th style="width:5%">Prijs</th>
-      <th style="width:20%" class="text-center">Totaal</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="product in shoppingCart.cart">
-      <td data-th="Product">
-        <div class="row">
-          <div class="col-sm-3 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-          <div class="col-sm-9">
-            <h4>{{product.name}}</h4>
-            <p>{{product.description}}</p>
-          </div>
-        </div>
-      </td>
-      <td data-th="Prijs">€{{product.price}}</td>
-      <td data-th="Aantal">
-        <input type="twxt" class="form-control text-center" value="{{product.quantity}}" readonly>
-      </td>
-      <td data-th="">
-        <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></button>
-        <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-sm"><i class="fa fa-plus"></i></button>
-      </td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr class="visible-xs">
-      <td class="text-center"><strong>Totaal {{shoppingCart.totalPrice}}</strong></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="hidden-xs"></td>
-      <td class="hidden-xs text-center"><strong>Totaal {{shoppingCart.totalPrice | number : 2}}</strong></td>
-      <td><a href="#" class="btn btn-success btn-block">Afrekenen <i class="fa fa-angle-right"></i></a></td>
-    </tr>
-    </tfoot>
-  </table>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="title">Winkelwagen</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table id="cart" class="table table-hover table-condensed">
+        <thead>
+        <tr>
+          <th style="width:55%">Product</th>
+          <th style="width:5%">Prijs</th>
+          <th style="width:20%" class="text-center">Totaal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in shoppingCart.cart">
+          <td data-th="Product">
+            <div class="row">
+              <div class="col-sm-3 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+              <div class="col-sm-9">
+                <h4>{{product.name}}</h4>
+                <p>{{product.description}}</p>
+              </div>
+            </div>
+          </td>
+          <td data-th="Prijs">€{{product.price}}</td>
+          <td data-th="Aantal">
+            <input type="twxt" class="form-control text-center" value="{{product.quantity}}" readonly>
+          </td>
+          <td data-th="">
+            <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></button>
+            <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-sm"><i class="fa fa-plus"></i></button>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr class="visible-xs">
+          <td class="text-center"><strong>Totaal {{shoppingCart.totalPrice}}</strong></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="hidden-xs"></td>
+          <td class="hidden-xs text-center"><strong>Totaal {{shoppingCart.totalPrice | number : 2}}</strong></td>
+          <td><a href="#" class="btn btn-success btn-block">Afrekenen <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 </div>
