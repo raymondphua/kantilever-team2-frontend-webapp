@@ -7,7 +7,7 @@
 
   /** @ngInject */
 
-  function catalogOverviewController(CatalogService) {
+  function catalogOverviewController(CatalogService, $state) {
     var vm = this;
 
     vm.init = function () {
@@ -16,11 +16,37 @@
         vm.products = response;
         vm.setPriceSlider(response);
       });
-      vm.categories = CatalogService.getAllCategories();
-      vm.brands = CatalogService.getAllBrands();
+
+      CatalogService.getAllCategories().$promise.then(function (response) {
+        vm.categories = response;
+        if($state.params.categoryFilter){
+          if(!vm.categoryFilters){
+            vm.categoryFilters = {};
+          }
+          vm.categoryFilters[$state.params.categoryFilter] = true;
+          $state.params = undefined;
+          vm.getProducts();
+        }
+      });
+
+      CatalogService.getAllBrands().$promise.then(function (response) {
+        vm.brands = response;
+        if($state.params.brandFilter){
+          if(!vm.brandFilters){
+            vm.brandFilters = {};
+          }
+          vm.brandFilters[$state.params.brandFilter] = true;
+          vm.getProducts();
+        }
+      });
 
       vm.itemsPerPage = 3;
       vm.maxPrice = null;
+      vm.categoryDefaultFilterLimit = 10;
+      vm.categoryFilterLimit = vm.categoryDefaultFilterLimit;
+      vm.brandDefaultFilterLimit = 10;
+      vm.brandFilterLimit = vm.brandDefaultFilterLimit;
+
 
       vm.setPage = function (pageNo) {
         vm.currentPage = pageNo;
@@ -109,7 +135,6 @@
 
       return queryParams;
     };
-
     //Radiobuttons verschillende typen
 
     // vm.headTypes = {"all", "categories", "brands"];

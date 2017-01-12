@@ -26,33 +26,11 @@
 
       vm.limit = 3;
 
-      // vm.trees = [{
-      //   name: "Konami",
-      //   link: "#",
-      //   subtree: [{
-      //     name: "Metal Gear",
-      //     link: "#",
-      //     subtree: [{
-      //       name: "Metal Gear",
-      //       link: "metal-gear"
-      //     }, {
-      //       name: "Metal Gear 2: Solid Snake",
-      //       link: "#"
-      //     }, {
-      //       name: "Metal Gear Solid: The Twin Snakes",
-      //       link: "#"
-      //     }]
-      //   }, {
-      //     name: "divider",
-      //     link: "#"
-      //   }]
-      // }];
-
       CatalogService.getAllCategories().$promise.then(function (response) {
         var subCategories = [];
 
         vm.trees = [{
-          name: "Filter",
+          name: "Zoek producten",
           link: "#",
           subtree: [{
             name: "Categorieën",
@@ -62,7 +40,7 @@
         }];
 
         response.forEach(function (category) {
-          subCategories.push({name:category, link: "#"})
+          subCategories.push({name:category.name, link: "catalog({categoryFilter:"+category._id+"})"})
         });
 
         CatalogService.getAllBrands().$promise.then(function(response) {
@@ -74,7 +52,7 @@
           };
 
           response.forEach(function(brand) {
-            subBrands.push({name: brand, link: "#"});
+            subBrands.push({name: brand.name, link: "catalog({brandFilter:"+brand._id+"})"});
           });
 
           vm.trees[0].subtree.push(subTree);

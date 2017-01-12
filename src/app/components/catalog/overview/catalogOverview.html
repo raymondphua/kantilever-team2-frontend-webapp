@@ -33,9 +33,15 @@
                 Categorieën
               </div>
               <div class="form-group">
-                <label class="checkbox" ng-repeat="category in vm.categories">
+                <label class="checkbox" ng-repeat="category in vm.categories | limitTo:vm.categoryFilterLimit">
                   <input type="checkbox" name="categoryFilters" ng-model="vm.categoryFilters[category._id]" ng-change="vm.getProducts();">{{category.name}}
                 </label>
+                <div ng-if="vm.categoryFilterLimit <= vm.categoryDefaultFilterLimit && vm.categories.length > vm.categoryFilterLimit">
+                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categories.length">meer..</div>
+                </div>
+                <div ng-if="vm.categoryFilterLimit > vm.categoryDefaultFilterLimit && vm.categoryDefaultFilterLimit < vm.categories.length">
+                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categoryDefaultFilterLimit">minder..</div>
+                </div>
               </div>
 
               <div class="filter-category-name">
@@ -43,9 +49,15 @@
               </div>
 
               <div class="form-group">
-                <label class="checkbox" ng-repeat="brand in vm.brands">
+                <label class="checkbox" ng-repeat="brand in vm.brands | limitTo:vm.brandFilterLimit">
                   <input type="checkbox" name="brandFilters" ng-model="vm.brandFilters[brand._id]" ng-change="vm.getProducts();">{{brand.name}}
                 </label>
+                <div ng-if="vm.brandFilterLimit <= vm.brandDefaultFilterLimit && vm.brands.length > vm.brandFilterLimit">
+                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brands.length">meer..</div>
+                </div>
+                <div ng-if="vm.brandFilterLimit > vm.brandDefaultFilterLimit && vm.brandDefaultFilterLimit < vm.brands.length">
+                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brandDefaultFilterLimit">minder..</div>
+                </div>
               </div>
 
               <div class="filter-category-name">
@@ -78,6 +90,7 @@
                     <div class="category-image" style="background-image: url('{{product.imgUrl}}')"></div>
                   </div>
                   <div class="category-name" style="text-align: right">{{product.name}}</div>
+                  <div class="category-name" style="text-align: right">{{product.brand.name}}</div>
                   <div class="product-price" style="float: right">&euro;{{product.price}}</div>
                 </div>
               </div>
