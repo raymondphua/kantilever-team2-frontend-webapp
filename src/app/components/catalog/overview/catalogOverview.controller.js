@@ -21,6 +21,11 @@
 
       vm.itemsPerPage = 3;
       vm.maxPrice = null;
+      vm.categoryDefaultFilterLimit = 10;
+      vm.categoryFilterLimit = vm.categoryDefaultFilterLimit;
+      vm.brandDefaultFilterLimit = 10;
+      vm.brandFilterLimit = vm.brandDefaultFilterLimit;
+
 
       vm.setPage = function (pageNo) {
         vm.currentPage = pageNo;
@@ -109,7 +114,6 @@
 
       return queryParams;
     };
-
     //Radiobuttons verschillende typen
 
     // vm.headTypes = {"all", "categories", "brands"];
