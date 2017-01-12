@@ -6,11 +6,17 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout) {
+  function MainController(CatalogService) {
     var vm = this;
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1483973234259;
+
+    vm.products = CatalogService.getAllProducts();
+
   }
+
+
+
 })();

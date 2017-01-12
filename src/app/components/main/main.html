@@ -1,5 +1,29 @@
-<div class="container">
+<div ng-init="vm.init()">
+  <div class="container">
 
-  <img src="/assets/images/banner.png" class="img-responsive">
+    <div class="row">
+      <div class="col-sm-12">
+        <img src="/assets/images/banner.png" class="img-responsive">
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="container-fluid">
+        <div class="row catalog-categories">
+
+          <div ng-repeat="product in vm.products | limitTo :4" class="col-sm-3" ui-sref="catalog-product({productId: product.id, product: product})">
+            <div class="clearfix" ng-if="$index % 3 == 0"></div>
+            <div class="category">
+              <div class="category-image-container">
+                <div class="category-image" style="background-image: url('{{product.imgUrl}}')"></div>
+              </div>
+              <div class="category-name" style="text-align: right">{{product.name}}</div>
+              <div class="product-price" style="float: right">&euro;{{product.price}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
