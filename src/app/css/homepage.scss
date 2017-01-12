@@ -1,0 +1,20 @@
+.homepage a p {
+  display: block;
+  margin: -20px 0 0 0;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: margin-top 0.2s;
+}
+
+.homepage{
+    a:hover{
+      margin-top: -26px;
+      color: #000000 !important;
+      text-decoration: none !important;
+      p{
+        margin: -24px 0 0 0;
+      }
+  }
+}
+
