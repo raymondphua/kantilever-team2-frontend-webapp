@@ -5,35 +5,16 @@
       <div class="col-sm-12">
         <img src="/assets/images/banner.png" class="img-responsive">
       </div>
-      <div class="col-sm-12">
-        <navbar></navbar>
-      </div>
     </div>
 
+    {{vm.products}}
+
     <div class="catalog-categories background-light-transparant homepage">
-    <div class="row">
+    <div class="row" ng-repeat="product in vm.products | limitTo:4">
       <div class="col-sm-3">
         <a href="#">
-          <img src="/assets/images/categories/aandrijving_en_versnelling/aandrijving_en_versnelling.jpg" class="img-responsive"/>
-          <p>Aandrijving en versnellingen</p>
-        </a>
-      </div>
-      <div class="col-sm-3">
-        <a href="#">
-          <img src="/assets/images/categories/accu_elektrische_fiets/accu_elektrische_fiets.jpg" class="img-responsive" />
-          <p>Accu elektrische fiets</p>
-        </a>
-      </div>
-      <div class="col-sm-3">
-        <a href="#">
-          <img src="/assets/images/categories/balhoofd/balhoofd.jpg" class="img-responsive" />
-          <p>Balhoofd</p>
-        </a>
-      </div>
-      <div class="col-sm-3">
-        <a href="#">
-          <img src="/assets/images/categories/bagagedragers/bagagedragers.jpg" class="img-responsive"/>
-          <p>Bagagedragers</p>
+          <img src="{{ product.imgUrl }}" class="img-responsive"/>
+          <p> {{ product.name }}</p>
         </a>
       </div>
     </div>
