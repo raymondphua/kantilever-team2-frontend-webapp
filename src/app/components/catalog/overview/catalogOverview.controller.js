@@ -38,11 +38,10 @@
         });
 
         vm.slider = {
-          value: vm.maxPrice,
+          value: Math.ceil(vm.maxPrice),
           options: {
             floor: 0,
-            ceil: vm.maxPrice,
-            step: 1,
+            ceil: Math.ceil(vm.maxPrice),
             onEnd: vm.getProducts,
             translate: function (value) {
               return '€' + value ;
@@ -51,7 +50,7 @@
         };
       }
       else{
-        vm.slider.value = (vm.slider.value > vm.maxPrice || !vm.slider.value)? vm.maxPrice:vm.slider.value;
+        vm.slider.value = Math.ceil((vm.slider.value > vm.maxPrice || !vm.slider.value)? vm.maxPrice:vm.slider.value);
       }
     };
 
@@ -95,7 +94,7 @@
       }
 
       if(vm.slider && vm.slider.value){
-        queryParams.price = vm.slider.value;
+        queryParams.price = Math.ceil(vm.slider.value);
       }
       else{
         delete queryParams.price;
