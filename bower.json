@@ -17,7 +17,9 @@
     "angular-toastr": "~1.5.0",
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
-    "angular": "~1.5.3"
+    "angular": "~1.5.3",
+    "ngstorage": "^0.3.11",
+    "ui-navbar": "^0.5.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
@@ -37,5 +39,19 @@
   "resolutions": {
     "jquery": "~2.1.4",
     "angular": "~1.5.3"
-  }
+  },
+  "authors": [
+    "paisan <paisan.rietbroek@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
