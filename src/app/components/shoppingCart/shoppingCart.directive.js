@@ -27,10 +27,6 @@
         $localStorage.items = [];
       }
 
-      //TODO: REMOVE TEST DATA
-      $localStorage.items = [{ id: 1, name: 'test product', description: 'Test description', price: 13.3, quantity: 1},
-                             { id: 2, name: 'test 2', description: 'Test 222222222', price: 33.3, quantity: 1}];
-
       vm.itemCount = updateCartCount();
 
       $rootScope.$on('cartUpdated', function (event) {

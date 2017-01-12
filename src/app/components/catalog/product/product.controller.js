@@ -7,7 +7,7 @@
 
   /** @ngInject */
 
-  function productController($state, product) {
+  function productController($state, product, ShoppingCartService, $rootScope) {
     var vm = this;
 
     vm.init = function () {
@@ -15,7 +15,10 @@
       vm.categoryName = $state.params.categoryName;
       vm.product = product;
 
-    }
+      vm.addProductToCart = function () {
+        $rootScope.$emit('cartUpdated', ShoppingCartService.addToCart(vm.product)); //addToCart(insert product here)
+      }
 
+    }
   }
 })();
