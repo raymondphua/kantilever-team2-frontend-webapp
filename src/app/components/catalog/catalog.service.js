@@ -11,9 +11,8 @@
     return {
       getAllProducts: getAllProducts,
       getAllCategories: getAllCategories,
-      getAllBrands: getAllBrands
+      getAllBrands: getAllBrands,
       getProductByProductName: getProductByProductName,
-      getCategoryByCategoryName: getCategoryByCategoryName,
       getCategoryByCategoryName: getCategoryByCategoryName,
       getCategoryById: getCategoryById,
       getProductById: getProductById
