@@ -9,10 +9,11 @@
   function routerConfig($stateProvider) {
     $stateProvider
       .state('catalog', {
-        url: '/catalog',
+        url: '/catalog?categoryFilter&brandFilter',
         templateUrl: 'app/components/catalog/overview/catalogOverview.html',
         controller: 'CatalogOverviewController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        params: {'categoryFilter': null, 'brandFilter': null}
       })
       .state('catalog-product', {
         url: '/catalog/product/:productId',
