@@ -10,11 +10,14 @@
       'ngMessages',
       'ngAria',
       'ngResource',
+      'ngStorage',
       'ui.router',
       'ui.bootstrap',
-      'toastr',
+      'rzModule',
+      'ui.navbar',
       'app.directives',
       'app.main',
-      'app.catalog']);
+      'app.catalog',
+      'app.shoppingCart']);
 
 })();

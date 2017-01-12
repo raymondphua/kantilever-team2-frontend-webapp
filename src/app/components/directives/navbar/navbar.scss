@@ -1,17 +1,46 @@
-.acme-navbar-text{
-  color: white;
+.navbar{
+  height:100%;
+  .navbar-brand{
+    height:130px;
+    .navbar-logo{
+      max-height:90px;
+    }
+  }
+
+  .nav.navbar-nav{
+    margin-top:50px;
+  }
+
+  .menu-link{
+    color:black !important;
+    display: block;
+    font-size: 20px;
+    &.active{
+      background: $color_head_text !important;
+      color:white !important;
+      &:hover{
+        background: $color_head_text !important;
+        color:white !important;
+        cursor: default;
+      }
+    }
+    &:hover{
+      color:$color_head_text !important;
+    }
+  }
+  .dropdown>a{
+    font-size: 20px ;
+    color:black !important;
+  }
+  .menu-shoppingcart{
+    color:black !important;
+    &:hover{
+      i{
+        color:$color_head_text;
+      }
+    }
+  }
 }
 
-a {
-  color: black;
-}
 
-h1 {
-  font-size: 2em;
-  margin: 0;
-  line-height: 1.25em;
-}
 
-a:hover, a:focus {
-  color: greenyellow;
-}
