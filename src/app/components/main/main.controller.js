@@ -13,9 +13,7 @@
     vm.classAnimation = '';
     vm.creationDate = 1483973234259;
 
-    CatalogService.getAllProducts().$promise.then(function (response) {
-      vm.products = response;
-    });
+    vm.products = CatalogService.getAllProducts();
 
   }
 
