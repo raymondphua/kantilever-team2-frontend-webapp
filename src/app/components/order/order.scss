@@ -1,25 +1,113 @@
-.order-products{
-  margin:0;
+.order-products {
+  margin: 0;
   border: 1px solid $color_border;
-  padding:15px;
+  padding: 15px;
 
-  .order-products-head{
+  .order-products-head {
     font-size: .857em;
   }
-  .order-products-title{
+  .order-products-title {
     margin-bottom: 10px;
   }
 
-  ul{
-    padding:15px;
+  ul {
+    padding: 15px;
     border-bottom: 1px solid $color_border;
-    margin:0;
-    li{
+    margin: 0;
+    li {
       font-size: .857em;
     }
   }
-  .prices{
-    padding-top:15px;
+  .prices {
+    padding-top: 15px;
     font-size: .857em;
   }
+}
+
+.nav.nav-tabs {
+  margin-bottom: 15px;
+  border-bottom: none;
+  background-color: $color_background_tabs;
+}
+
+.uib-tab {
+  a {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    background-color: $color_button !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    color: white !important;;
+  }
+  &.active {
+    ~ .uib-tab {
+      a {
+        background-color: $color_background_tabs !important;
+        color: $color_black !important;
+      }
+    }
+
+    &:after {
+      left: 95%;
+      border-color: $color_background_tabs $color_background_tabs $color_background_tabs $color_button;
+      position: absolute;
+      top: 0px;
+      width: 0px;
+      height: 0px;
+      content: "";
+      transform: rotate(360deg);
+      border-width: 19px 0px 1.55em 1.55em;
+      border-style: solid;
+      z-index: 10;
+    }
+  }
+  &.disabled {
+    a {
+      cursor: default !important;
+      border: none !important;
+    }
+  }
+}
+
+.order-address {
+  border: 1px solid $color_border;
+  font-family: $font_light;
+  padding: 15px;
+  .form-group {
+    margin-bottom: 15px;
+  }
+  label {
+    font-weight: normal !important;
+  }
+}
+
+.order-headline {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.checkbox-address {
+  margin-left: 35px;
+  font-family: $font_light;
+  font-weight: normal;
+  cursor: pointer;
+  input {
+    cursor: pointer;
+  }
+}
+
+.order-step-button {
+  margin-top: 15px;
+  button {
+    border-radius: 0;
+  }
+}
+
+.other-address-button {
+  margin-top: 15px;
+  display: block;
+}
+
+.table-cell-border-top{
+  border-top: 1px solid $color_border;
 }

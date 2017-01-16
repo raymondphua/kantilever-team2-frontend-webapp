@@ -34,7 +34,7 @@
     }
 
     function refreshCart() {
-      if($localStorage.items){
+      if($localStorage.items != undefined){
         vm.cart = $localStorage.items;
         calculateTotalPrice();
       }

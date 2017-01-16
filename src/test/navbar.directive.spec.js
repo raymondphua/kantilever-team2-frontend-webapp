@@ -51,7 +51,6 @@
     // });
 
     // it('should call Moment', function() {
-    //   console.log($window.moment)
     //   expect($window.moment).toHaveBeenCalled();
     // });
   });

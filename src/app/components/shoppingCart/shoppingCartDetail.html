@@ -36,13 +36,19 @@
         </tr>
         </tbody>
         <tfoot>
+        <tr ng-hide="shoppingCart.cart.length > 0">
+          <td class="text-center" colspan="3">
+            <div>U heeft nog geen artikelen aan uw winkelwagen toegevoegd.</div>
+            <a ui-sref="catalog">Klik hier om naar de catalogus te gaan</a>
+          </td>
+        </tr>
         <tr class="visible-xs">
           <td class="text-center"><strong>Totaal {{shoppingCart.totalPrice}}</strong></td>
         </tr>
         <tr>
           <td colspan="2" class="hidden-xs"></td>
           <td class="hidden-xs text-center"><strong>Totaal {{shoppingCart.totalPrice | number : 2}}</strong></td>
-          <td><a ui-sref="order" class="btn btn-success btn-block">Afrekenen <i class="fa fa-angle-right"></i></a></td>
+          <td ng-show="shoppingCart.cart.length > 0"><a ui-sref="order" class="btn btn-success btn-block">Afrekenen <i class="fa fa-angle-right"></i></a></td>
         </tr>
         </tfoot>
       </table>
