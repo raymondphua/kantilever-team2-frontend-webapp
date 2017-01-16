@@ -1,0 +1,25 @@
+.order-products{
+  margin:0;
+  border: 1px solid $color_border;
+  padding:15px;
+
+  .order-products-head{
+    font-size: .857em;
+  }
+  .order-products-title{
+    margin-bottom: 10px;
+  }
+
+  ul{
+    padding:15px;
+    border-bottom: 1px solid $color_border;
+    margin:0;
+    li{
+      font-size: .857em;
+    }
+  }
+  .prices{
+    padding-top:15px;
+    font-size: .857em;
+  }
+}

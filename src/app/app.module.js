@@ -18,6 +18,7 @@
       'app.directives',
       'app.main',
       'app.catalog',
-      'app.shoppingCart']);
+      'app.shoppingCart',
+      'app.order']);
 
 })();
