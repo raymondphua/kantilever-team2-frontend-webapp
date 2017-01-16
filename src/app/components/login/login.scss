@@ -62,3 +62,21 @@
   display: block;
   margin-top: 10px;
 }
+
+.notification {
+  border: 1px solid #d12c2a;
+  border-radius: .25em;
+  padding: .75em;
+}
+
+.notification-title {
+  padding-bottom: .25em;
+  padding-left: 1.75em;
+  line-height: 1.5;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.notification-list {
+  padding-left: 1.75em;
+}
