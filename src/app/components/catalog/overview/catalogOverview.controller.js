@@ -19,7 +19,7 @@
 
       CatalogService.getAllCategories().$promise.then(function (response) {
         vm.categories = response;
-        if($state.params.categoryFilter){
+        if($state.params && $state.params.categoryFilter){
           if(!vm.categoryFilters){
             vm.categoryFilters = {};
           }
@@ -31,7 +31,7 @@
 
       CatalogService.getAllBrands().$promise.then(function (response) {
         vm.brands = response;
-        if($state.params.brandFilter){
+        if($state.params && $state.params.brandFilter){
           if(!vm.brandFilters){
             vm.brandFilters = {};
           }
@@ -97,7 +97,7 @@
 
       if(vm.categoryFilters){
         Object.keys(vm.categoryFilters).forEach(function (key) {
-          if(vm.categoryFilters[key] == true){
+          if(vm.categoryFilters[key]){
             queryParams.categories += "," + key;
           }
         });
@@ -109,7 +109,7 @@
 
       if(vm.brandFilters) {
         Object.keys(vm.brandFilters).forEach(function (key) {
-          if (vm.brandFilters[key] == true) {
+          if (vm.brandFilters[key]) {
             queryParams.brands += "," + key;
           }
         });
@@ -135,25 +135,5 @@
 
       return queryParams;
     };
-    //Radiobuttons verschillende typen
-
-    // vm.headTypes = {"all", "categories", "brands"];
-    // vm.selectedHeadType = "all";
-    // vm.changeSelectedHeadType();
-
-    // vm.changeSelectedHeadType = function () {
-    //   switch (vm.selectedHeadType){
-    //     case "all":
-    //       vm.listItems = vm.products;
-    //       break;
-    //     case "categories":
-    //       vm.listItems = vm.categories;
-    //       break;
-    //     case "brands":
-    //       vm.listItems = vm.products;
-    //       break;
-    //   }
-    // };
-
   }
 })();

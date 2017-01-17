@@ -86,11 +86,11 @@
                 <div class="order-headline">Factuuradres</div>
                 <div class="form-group">
                   <label class="checkbox checkbox-address">
-                    <input type="checkbox" name="invoiceAddressEqualsDeliveryAddress" ng-model="vm.order.invoiceAddressEqualsDeliveryAddress">
+                    <input type="checkbox" name="invoiceAddressEqualsDeliveryAddress" ng-model="vm.invoiceAddressEqualsDeliveryAddress">
                     Factuuradres is hetzelfde als het afleveradres
                   </label>
                 </div>
-                <div ng-show="!vm.order.invoiceAddressEqualsDeliveryAddress">
+                <div ng-show="!vm.invoiceAddressEqualsDeliveryAddress">
                   <div>{{vm.customer.name}}</div>
                   <div>{{vm.customer.address.address}}</div>
                   <div>{{vm.customer.address.zip}} {{vm.customer.address.city}}</div>

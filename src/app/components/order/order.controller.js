@@ -30,12 +30,7 @@
         totalPrice: (vm.productsTotalPrice + vm.shippingFee),
         shippingFee: vm.shippingFee,
         customer: vm.customer,
-        orderedProducts: vm.products,
-        "deliveryAddress": {
-        "address": "",
-          "city": "",
-          "zip": ""
-      }
+        orderedProducts: vm.products
       }
     };
 

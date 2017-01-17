@@ -6,7 +6,7 @@
     .controller('ShoppingCartController', ShoppingCartController);
 
   /** @ngInject */
-  function ShoppingCartController(ShoppingCartService, $rootScope, $localStorage) { //ShoppingCartService, $rootScope, $localStorage these 3 are needed for shoppingCart
+  function ShoppingCartController(ShoppingCartService, $rootScope, $localStorage) {
     var vm = this;
 
     refreshCart();
