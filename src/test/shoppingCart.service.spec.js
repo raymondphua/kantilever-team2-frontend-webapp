@@ -13,13 +13,13 @@ describe('Service shoppingcart', function() {
     });
     return found;
   }
+
   beforeEach(function() {
-    module('app.directives');
+    module('feweb');
+    cart = [{id : 1, quantity: 1}, {id: 2, quantity: 1}];
     inject(function(_ShoppingCartService_) {
       shoppingCartService = _ShoppingCartService_;
     });
-
-    cart = [{id : 1, quantity: 1}, {id: 2, quantity: 1}];
   });
 
   it('Should add a new product to the cart', function() {
