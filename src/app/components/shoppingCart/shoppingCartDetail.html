@@ -18,7 +18,7 @@
         <tr ng-repeat="product in shoppingCart.cart">
           <td data-th="Product">
             <div class="row">
-              <div class="col-sm-3 hidden-xs"><img src="{{product.imgUrl}}" alt="..." class="img-responsive"/></div>
+              <div class="col-sm-3 hidden-xs"><img src="{{product.imgUrl}}" alt="..." class="img-responsive pointer" ui-sref="catalog-product({productId: product.id, product: product})"/></div>
               <div class="col-sm-9">
                 <h4>{{product.name}}</h4>
                 <p>{{product.description}}</p>

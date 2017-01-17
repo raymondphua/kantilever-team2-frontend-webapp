@@ -35,8 +35,7 @@
         "address": "",
           "city": "",
           "zip": ""
-      },
-      "status": "BESTELD"
+      }
       }
     };
 

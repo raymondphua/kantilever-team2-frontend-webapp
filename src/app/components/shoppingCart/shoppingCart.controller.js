@@ -10,7 +10,10 @@
     var vm = this;
 
     refreshCart();
-    $rootScope.$on('cartUpdated', refreshCart);
+
+    var deregisterationCallback = $rootScope.$on('cartUpdated', refreshCart);
+
+    $rootScope.$on('$destroy', deregisterationCallback);
 
     function calculateTotalPrice() {
       var total = 0;

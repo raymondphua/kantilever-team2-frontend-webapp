@@ -7,7 +7,7 @@
 
   /** @ngInject */
 
-  function shoppingCartService($localStorage, $rootScope) {
+  function shoppingCartService($localStorage) {
     return {
       addToCart: addToCart,
       removeFromCart: removeFromCart,

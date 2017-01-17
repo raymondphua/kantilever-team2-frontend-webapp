@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function shoppingCart() {
-    var directive = {
+    return {
       restrict: 'E',
       templateUrl: 'app/components/shoppingCart/shoppingCart.html',
       scope: {
@@ -16,9 +16,6 @@
       controllerAs: 'vm',
       bindToController: true
     };
-
-    return directive;
-
     /** @ngInject */
     function ShoppingCartController($localStorage, $rootScope) {
       var vm = this;
@@ -29,9 +26,11 @@
 
       vm.itemCount = updateCartCount();
 
-      $rootScope.$on('cartUpdated', function (event) {
+      var deregisterationCallback = $rootScope.$on('cartUpdated', function () {
         vm.itemCount = updateCartCount();
       });
+
+      $rootScope.$on('$destroy', deregisterationCallback);
 
       function updateCartCount() {
         var count = 0;

@@ -1,7 +1,7 @@
 <div ng-init="vm.init()">
   <div class="container">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-3" >
         <div class="order-products" ng-show="vm.products.length > 0">
           <div class="order-products-title">Winkelwagen</div>
 
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="col-sm-9">
-        <uib-tabset active="vm.activeTab" ng-show="vm.products.length > 0">
+        <uib-tabset active="vm.activeTab">
           <uib-tab heading="1. Bestelling" disable="true">
             <form class="form-horizontal">
               <div class="order-address" ng-hide="vm.divergentDeliveryAddress">
@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="order-step-button">
-                <button class="btn btn-primary" ng-click="vm.confirmOrder()">Bevestig uw bestelling</button>
+                <button class="btn btn-primary" ng-click="vm.confirmOrder()" ng-disabled="vm.products.length < 1">Bevestig uw bestelling</button>
               </div>
             </form>
           </uib-tab>
@@ -108,10 +108,6 @@
           </uib-tab>
         </uib-tabset>
       </div>
-    </div>
-    <div ng-hide="vm.products.length > 0">
-      <div>U heeft nog geen artikelen aan uw winkelwagen toegevoegd.</div>
-      <a ui-sref="catalog">Klik hier om naar de catalogus te gaan</a>
     </div>
   </div>
 </div>
