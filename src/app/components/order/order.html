@@ -96,8 +96,17 @@
                   <div>{{vm.customer.address.zip}} {{vm.customer.address.city}}</div>
                 </div>
               </div>
+              <div class="accept-terms-container" style="margin-top: 15px">
+                <a href="assets/documents/voorwaarden.pdf" target="_blank">Algemene voorwaarden</a>
+                <div class="form-group">
+                  <label class="checkbox checkbox-address">
+                    <input type="checkbox" name="accept_terms" ng-model="vm.acceptTerms">
+                    Ik ga akkoord met de algemene voorwaarden
+                  </label>
+                </div>
+              </div>
               <div class="order-step-button">
-                <button class="btn btn-primary" ng-click="vm.confirmOrder()" ng-disabled="vm.products.length < 1">Bevestig uw bestelling</button>
+                <button class="btn btn-primary" ng-click="vm.confirmOrder()" ng-disabled="vm.products.length < 1 || !vm.acceptTerms">Bevestig uw bestelling</button>
               </div>
             </form>
           </uib-tab>
