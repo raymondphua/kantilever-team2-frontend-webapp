@@ -19,6 +19,7 @@
       'app.main',
       'app.catalog',
       'app.shoppingCart',
-      'app.login']);
+      'app.login',
+      'app.order']);
 
 })();
