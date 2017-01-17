@@ -7,7 +7,6 @@
 
   /** @ngInject */
   function factory($resource) {
-    // Enable log
     return function( url, params, methods ) {
       var defaults = {
         update: { method: 'put', isArray: false },
@@ -30,5 +29,4 @@
       return resource;
     };
   }
-
 })();

@@ -11,18 +11,17 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
           <a class="navbar-brand" ui-sref="home">
             <img src="/assets/images/logo.png" class="navbar-logo">
           </a>
           <ul class="nav navbar-nav">
-            <trees trees="vm.trees">
-            </trees>
-          </ul>
-          <ul class="nav navbar-nav">
             <li><a ui-sref="home" ui-sref-active="active" class="menu-link">Home</a></li>
             <li><a ui-sref="catalog" ui-sref-active="active" class="menu-link">Catalogus</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <trees trees="vm.trees">
+            </trees>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

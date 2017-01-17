@@ -14,7 +14,8 @@
       findProductInCart: findProductInCart,
       getAllCartProducts: getAllCartProducts,
       getCartProductsTotalPrice: getCartProductsTotalPrice,
-      getCartProductsTotalItems: getCartProductsTotalItems
+      getCartProductsTotalItems: getCartProductsTotalItems,
+      clearCart: clearCart
     };
 
     function addToCart(product, cart) {
@@ -75,6 +76,10 @@
       });
 
       return count;
+    }
+
+    function clearCart() {
+        $localStorage.items = [];
     }
   }
 })();

@@ -13,7 +13,7 @@
     };
 
     function createOrder(order) {
-      return ResourceService(serviceBase + "order").create(order);
+      return ResourceService(serviceBase + "orderprocessservice/orders").create(order);
     }
   }
 })();

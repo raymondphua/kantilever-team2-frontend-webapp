@@ -16,7 +16,4 @@
     vm.products = CatalogService.getAllProducts();
 
   }
-
-
-
 })();
