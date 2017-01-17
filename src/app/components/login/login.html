@@ -1,0 +1,39 @@
+<div ng-init="vm.init()">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <img src="/assets/images/banner.png" class="img-responsive">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <div class="account-wall">
+
+          <div class="notification" ng-show="login.loginForm.$submitted && login.loginForm.$invalid">
+            <h2 class="notification-title">We wijzen je graag op het volgende:</h2>
+            <ul class="notification-list">
+              <li ng-show="login.loginForm.$submitted && login.loginForm.email.$invalid">Email is een verplicht veld</li>
+              <li ng-show="login.loginForm.$submitted && login.loginForm.password.$invalid">Wachtwoord is een verplicht veld</li>
+            </ul>
+          </div>
+
+          <form class="loginForm" name="login.loginForm" novalidate>
+            <h1 class="text-center login-title">Inloggen</h1>
+            <input type="text" name="email" ng-model="login.email" class="form-control" placeholder="Email" required>
+            <input type="password" name="password" ng-model="login.password" class="form-control" placeholder="Wachtwoord" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Inloggen</button>
+            <!--<label class="checkbox pull-left">-->
+              <!--<input type="checkbox" value="remember-me"> Remember me-->
+            <!--</label>-->
+            <!--<a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>-->
+          </form>
+        </div>
+        <!--<a href="#" class="text-center new-account">Create an account </a>-->
+      </div>
+    </div>
+  </div>
+</div>
