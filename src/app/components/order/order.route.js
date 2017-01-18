@@ -12,7 +12,13 @@
         url: '/order',
         templateUrl: 'app/components/order/order.html',
         controller: 'OrderController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            only: ['user'],
+            redirectTo: 'login'
+          }
+        }
       });
   }
 })();
