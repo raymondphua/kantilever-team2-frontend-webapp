@@ -9,43 +9,55 @@
       <table id="cart" class="table table-hover table-condensed">
         <thead>
         <tr>
-          <th style="width:55%">Product</th>
+          <th>Product</th>
           <th style="width:5%">Prijs</th>
-          <th style="width:20%" class="text-center">Totaal</th>
+          <th style="width:5%" class="text-center">Aantal</th>
+          <th style="width:10%"></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="product in shoppingCart.cart">
           <td data-th="Product">
             <div class="row">
-              <div class="col-sm-3 hidden-xs"><img src="{{product.imgUrl}}" alt="..." class="img-responsive"/></div>
+              <div class="col-sm-3 hidden-xs"><img ng-src="{{product.imgUrl}}" alt="..." class="img-responsive pointer" ui-sref="catalog-product({productId: product.id, product: product})"/></div>
               <div class="col-sm-9">
-                <h4>{{product.name}}</h4>
+                <h4 class="pointer" ui-sref="catalog-product({productId: product.id, product: product})">{{product.name}}</h4>
                 <p>{{product.description}}</p>
               </div>
             </div>
           </td>
-          <td data-th="Prijs">€{{product.price}}</td>
+          <td data-th="Prijs" class="cart-product-price">€{{product.price | number:2}}</td>
           <td data-th="Aantal">
-            <input type="twxt" class="form-control text-center" value="{{product.quantity}}" readonly>
+            <input type="text" class="form-control text-center" value="{{product.quantity}}" readonly>
           </td>
           <td data-th="">
-            <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-sm"><i class="fa fa-minus"></i></button>
-            <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-sm"><i class="fa fa-plus"></i></button>
+            <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-md"><i class="fa fa-minus"></i></button>
+            <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-md"><i class="fa fa-plus"></i></button>
           </td>
         </tr>
         </tbody>
         <tfoot>
-        <tr class="visible-xs">
-          <td class="text-center"><strong>Totaal {{shoppingCart.totalPrice}}</strong></td>
-        </tr>
-        <tr>
-          <td colspan="2" class="hidden-xs"></td>
-          <td class="hidden-xs text-center"><strong>Totaal {{shoppingCart.totalPrice | number : 2}}</strong></td>
-          <td><a ui-sref="order" class="btn btn-success btn-block">Afrekenen <i class="fa fa-angle-right"></i></a></td>
+        <tr ng-hide="shoppingCart.cart.length > 0">
+          <td class="text-center" colspan="3">
+            <div>U heeft nog geen artikelen aan uw winkelwagen toegevoegd.</div>
+            <a ui-sref="catalog" class="pointer">Klik hier om naar de catalogus te gaan</a>
+          </td>
         </tr>
         </tfoot>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-7">
+      <div class="text-center cart-total-price"><strong>Totaal &euro; {{shoppingCart.totalPrice | number:2}}</strong></div>
+    </div>
+    <div class="col-sm-2">
+      <div ng-show="shoppingCart.cart.length > 0">
+        <a ui-sref="order" class="btn btn-success btn-block">
+          Afrekenen
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

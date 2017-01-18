@@ -7,8 +7,6 @@
 
   /** @ngInject */
   function LoginController() {
-    var vm = this;
-
 
   }
 })();

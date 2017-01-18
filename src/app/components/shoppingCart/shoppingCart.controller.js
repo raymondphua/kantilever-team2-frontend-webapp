@@ -6,11 +6,14 @@
     .controller('ShoppingCartController', ShoppingCartController);
 
   /** @ngInject */
-  function ShoppingCartController(ShoppingCartService, $rootScope, $localStorage) { //ShoppingCartService, $rootScope, $localStorage these 3 are needed for shoppingCart
+  function ShoppingCartController(ShoppingCartService, $rootScope, $localStorage) {
     var vm = this;
 
     refreshCart();
-    $rootScope.$on('cartUpdated', refreshCart);
+
+    var deregisterationCallback = $rootScope.$on('cartUpdated', refreshCart);
+
+    $rootScope.$on('$destroy', deregisterationCallback);
 
     function calculateTotalPrice() {
       var total = 0;
@@ -34,7 +37,7 @@
     }
 
     function refreshCart() {
-      if($localStorage.items){
+      if($localStorage.items != undefined){
         vm.cart = $localStorage.items;
         calculateTotalPrice();
       }
