@@ -7,25 +7,16 @@
 
   /** @ngInject */
 
-  function orderController(ShoppingCartService, OrderService, $rootScope) {
+  function orderController(ShoppingCartService, OrderService, $rootScope, AuthorizationService, customer) {
     var vm = this;
 
     vm.init = function () {
       vm.products = ShoppingCartService.getAllCartProducts();
       vm.productsTotalPrice = ShoppingCartService.getCartProductsTotalPrice();
       vm.productsTotalItems = ShoppingCartService.getCartProductsTotalItems();
-      vm.shippingFee = 100;
-      vm.customer = {
-          "id": "1",
-          "name": "Jan Meesters",
-          "email": "jan.meesters@gmail.com",
-          "phone": "0612345678",
-          "address": {
-            "address": "Test straat 13",
-            "city": "Breda",
-            "zip": "1234AB"
-          }
-      };
+      vm.shippingFee = 20;
+      vm.customer = customer;
+
       vm.order = {
         totalPrice: (vm.productsTotalPrice + vm.shippingFee),
         shippingFee: vm.shippingFee,

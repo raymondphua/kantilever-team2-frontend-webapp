@@ -16,7 +16,10 @@
     // Also enable router to listen to url changes
     $urlRouter.listen();
 
-    $rootScope.user = AuthorizationService.getCurrentUser();
+    AuthorizationService.getCurrentUser().then(function(user){
+      $rootScope.user = user;
+    });
+
 
     // AuthorizationService.isLoggedIn()
     //   .then(function(isLoggedIn){

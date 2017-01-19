@@ -7,13 +7,14 @@
 
   /** @ngInject */
 
-  function authorizationService(ResourceService, $http, $localStorage, PermPermissionStore, $rootScope, serviceBaseAuthentication, $httpParamSerializer) {
+  function authorizationService(ResourceService, $http, $q, $localStorage, PermPermissionStore, $rootScope, serviceBase, serviceBaseAuthentication, $httpParamSerializer) {
 
     return {
       getToken: getToken,
       setToken: setToken,
       isLoggedIn: isLoggedIn,
       getCurrentUser: getCurrentUser,
+      getUserByEmail: getUserByEmail,
       login: login,
       logout: logout,
       setUser: setUser
@@ -28,17 +29,35 @@
       return $localStorage.Authorization = token;
     }
 
-    function setUser(username) {
-      $localStorage.username = username;
-      $rootScope.user = username;
+    function setUser(user) {
+      $localStorage.username = user.email;
+      $rootScope.user = user;
     }
 
     function isLoggedIn(){
-      return $localStorage.Authorization;
+      if(!$localStorage.Authorization){
+        return false
+      }
+      else{
+        return true;
+      }
     }
 
     function getCurrentUser(){
-      return $localStorage.username;
+      if(!$localStorage.username){return $q.when(null)}
+
+      return getUserByEmail($localStorage.username);
+    }
+
+    function getUserByEmail(email) {
+      var defered = $q.defer();
+      ResourceService(serviceBase + "customerservice/customers", {email:  email}).query().$promise.then(function (users) {
+        defered.resolve(users[0]);
+      }, function(error){
+        defered.reject(error);
+      });
+
+      return defered.promise;
     }
 
     function login(user){
@@ -53,7 +72,9 @@
       return ResourceService(serviceBaseAuthentication + 'oauth/token').saveAsFormEncoded($httpParamSerializer(requestParams),function(data){
         if(data.access_token){
           setToken(data.token_type + " " + data.access_token);
-          setUser(user.email);
+          getUserByEmail(user.email).then(function (user) {
+            setUser(user);
+          });
           $http.defaults.headers.common['Authorization']= data.token_type + " " + data.access_token;
           PermPermissionStore.definePermission('user', function(){
             return true;

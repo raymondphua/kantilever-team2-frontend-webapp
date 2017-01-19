@@ -12,7 +12,13 @@
         url: '/login',
         templateUrl: 'app/components/authorization/login.html',
         controller: 'LoginController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            except: ['user'],
+            redirectTo: 'home'
+          }
+        }
       });
   }
 })();

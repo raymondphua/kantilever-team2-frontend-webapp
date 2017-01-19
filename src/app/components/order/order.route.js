@@ -18,6 +18,13 @@
             only: ['user'],
             redirectTo: 'login'
           }
+        },
+        resolve: {
+          customer: function(AuthorizationService) {
+            return AuthorizationService.getCurrentUser().then(function (user) {
+              return user;
+            })
+          }
         }
       });
   }
