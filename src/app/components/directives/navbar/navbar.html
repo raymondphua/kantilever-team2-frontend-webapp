@@ -11,21 +11,23 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
           <a class="navbar-brand" ui-sref="home">
             <img src="/assets/images/logo.png" class="navbar-logo">
           </a>
           <ul class="nav navbar-nav">
-            <trees trees="vm.trees">
-            </trees>
-          </ul>
-          <ul class="nav navbar-nav">
             <li><a ui-sref="home" ui-sref-active="active" class="menu-link">Home</a></li>
             <li><a ui-sref="catalog" ui-sref-active="active" class="menu-link">Catalogus</a></li>
           </ul>
+          <ul class="nav navbar-nav">
+            <trees trees="vm.trees">
+            </trees>
+          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right header-user">
+            <li ng-if="!$root.user"><a ui-sref="login" class="menu-link">Inloggen</a></li>
+            <li ng-if="$root.user" id="username"><a class="menu-link no-hover" style="padding-right: 5px;">{{$root.user.email}} </a></li>
+            <li ng-if="$root.user">| <span class="fa fa-sign-out fa-2x" style="padding:15px; padding-left: 5px;" ng-click="vm.logOut()" title="Uitloggen"></span></li>
             <li><a ng-href="shoppingCart" class="menu-shoppingcart"><shoppingcart></shoppingcart></a></li>
           </ul>
         </div>

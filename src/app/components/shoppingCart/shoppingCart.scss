@@ -1,1 +1,20 @@
+.shopping-cart-header{
+  .shopping-cart-header-count{
+    font-size:20px;
+  }
+}
 
+a.menu-shoppingcart{
+  &:hover{
+    color: $color_head_text !important;
+  }
+}
+
+
+.cart-product-price{
+  font-size: 20px;
+}
+
+.cart-total-price{
+  font-size: 20px;
+}

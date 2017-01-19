@@ -27,6 +27,11 @@
     &:hover{
       color:$color_head_text !important;
     }
+    &.no-hover{
+      &:hover{
+        color: black !important;
+      }
+    }
   }
   .dropdown>a{
     font-size: 20px ;
@@ -34,11 +39,15 @@
   }
   .menu-shoppingcart{
     color:black !important;
-    &:hover{
-      i{
-        color:$color_head_text;
-      }
-    }
+  }
+}
+
+.header-user{
+  a{
+    font-size: 14px !important;
+  }
+  .fa{
+    font-size: 20px !important;
   }
 }
 

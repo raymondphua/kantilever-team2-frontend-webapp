@@ -10,7 +10,12 @@
   function shoppingCartService($localStorage) {
     return {
       addToCart: addToCart,
-      removeFromCart: removeFromCart
+      removeFromCart: removeFromCart,
+      findProductInCart: findProductInCart,
+      getAllCartProducts: getAllCartProducts,
+      getCartProductsTotalPrice: getCartProductsTotalPrice,
+      getCartProductsTotalItems: getCartProductsTotalItems,
+      clearCart: clearCart
     };
 
     function addToCart(product, cart) {
@@ -47,6 +52,34 @@
       });
 
       return returnProduct;
+    }
+
+    function getAllCartProducts() {
+      return $localStorage.items;
+    }
+
+
+    function getCartProductsTotalPrice() {
+      var total = 0;
+      $localStorage.items.forEach(function(product) {
+        total += product.quantity * product.price;
+      });
+
+      return total;
+    }
+
+
+    function getCartProductsTotalItems() {
+      var count = 0;
+      $localStorage.items.forEach(function(product) {
+        count += product.quantity;
+      });
+
+      return count;
+    }
+
+    function clearCart() {
+        $localStorage.items = [];
     }
   }
 })();

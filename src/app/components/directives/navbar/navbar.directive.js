@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function navbar() {
-    var directive = {
+    return {
       restrict: 'E',
       templateUrl: 'app/components/directives/navbar/navbar.html',
       scope: {
@@ -18,13 +18,16 @@
       bindToController: true
     };
 
-    return directive;
-
     /** @ngInject */
-    function NavbarController(CatalogService) {
+    function NavbarController(CatalogService, AuthorizationService, $state) {
       var vm = this;
 
       vm.limit = 3;
+
+      vm.logOut = function () {
+        AuthorizationService.logout();
+        $state.go("shoppingCartDetail");
+      };
 
       CatalogService.getAllCategories().$promise.then(function (response) {
         var subCategories = [];
