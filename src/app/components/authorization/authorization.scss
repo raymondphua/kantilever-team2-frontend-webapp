@@ -107,4 +107,23 @@
   color: $color_head_text;
 }
 
+.notification {
+  border: 1px solid #d12c2a;
+  border-radius: .25em;
+  padding: .75em;
+  margin-bottom: 10px;
+}
+
+.notification-title {
+  padding-bottom: .25em;
+  padding-left: 1.75em;
+  line-height: 1.5;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.notification-list {
+  padding-left: 1.75em;
+}
+
 
