@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.login')
+    .module('app.authorization')
     .config(routerConfig);
 
   /** @ngInject */
@@ -10,9 +10,16 @@
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'app/components/login/login.html',
+        templateUrl: 'app/components/authorization/login.html',
         controller: 'LoginController',
-        controllerAs: 'login'
+        controllerAs: 'vm',
+        data: {
+          permissions: {
+            except: ['user'],
+            redirectTo: 'home'
+          }
+        }
       });
   }
 })();
+

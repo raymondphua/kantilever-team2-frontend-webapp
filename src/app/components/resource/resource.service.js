@@ -10,7 +10,13 @@
     return function( url, params, methods ) {
       var defaults = {
         update: { method: 'put', isArray: false },
-        create: { method: 'post' }
+        create: { method: 'post' },
+        saveAsFormEncoded: {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
       };
 
       methods = angular.extend( defaults, methods );

@@ -3,6 +3,8 @@
 
   angular
     .module('feweb', [
+      'permission',
+      'permission.ui',
       'ngAnimate',
       'ngCookies',
       'ngTouch',
@@ -16,10 +18,11 @@
       'rzModule',
       'ui.navbar',
       'app.directives',
+      'app.authorization',
       'app.main',
       'app.catalog',
       'app.shoppingCart',
-      'app.login',
+      // 'app.login',
       'app.order']);
 
 })();

@@ -1,6 +1,7 @@
 'use strict';
 
 var paths = require('./.yo-rc.json')['generator-gulp-angular'].props.paths;
+var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 // An example configuration file.
 exports.config = {
@@ -23,5 +24,13 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000
+  },
+
+  onPrepare: function () {
+    jasmine.getEnv().addReporter(new SpecReporter({
+      spec: {
+        displayStacktrace: true
+      }
+    }));
   }
 };

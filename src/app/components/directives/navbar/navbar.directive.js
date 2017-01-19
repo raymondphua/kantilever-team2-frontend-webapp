@@ -19,10 +19,15 @@
     };
 
     /** @ngInject */
-    function NavbarController(CatalogService) {
+    function NavbarController(CatalogService, AuthorizationService, $state) {
       var vm = this;
 
       vm.limit = 3;
+
+      vm.logOut = function () {
+        AuthorizationService.logout();
+        $state.go("shoppingCartDetail");
+      };
 
       CatalogService.getAllCategories().$promise.then(function (response) {
         var subCategories = [];

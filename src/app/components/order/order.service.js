@@ -9,11 +9,16 @@
 
   function orderService(ResourceService, serviceBase) {
     return {
-      createOrder: createOrder
+      createOrder: createOrder,
+      getAllOrders: getAllOrders
     };
 
     function createOrder(order) {
-      return ResourceService(serviceBase + "orderprocessservice/orders").create(order);
+      return ResourceService(serviceBase + "orderservice/orders").create(order);
+    }
+
+    function getAllOrders(){
+      ResourceService(serviceBase + "orderservice/orders").query();
     }
   }
 })();
