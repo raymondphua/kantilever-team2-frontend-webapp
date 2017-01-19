@@ -18,7 +18,6 @@
       login: login,
       logout: logout,
       setUser: setUser
-      // signUp: signUp
     };
 
     function getToken(){
@@ -91,14 +90,5 @@
       PermPermissionStore.removePermissionDefinition('user');
       $http.defaults.headers.common['Authorization']= undefined;
     }
-
-    // function signUp(user){
-    //   return ResourceService('/auth/signup').save(user, function(data){
-    //     if(data.token){
-    //       setToken(data.token);
-    //       $http.defaults.headers.common['Authorization']= data.token;
-    //     }
-    //   });
-    // }
   }
 })();

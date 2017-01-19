@@ -21,18 +21,6 @@
           vm.error = "Gebruikersnaam en/of wachtwoord is onjuist.";
         });
       };
-
-    // vm.signUp = function(){
-    //   AuthorizationService.signUp(self.user).$promise.then(function(data){
-    //     AuthorizationService.getCurrentUser().then(function(){
-    //       $state.go("order");
-    //     });
-    //   },function(error){
-    //     if(error.data.message){
-    //       self.error = error.data.message;
-    //     }
-    //   });
-    // };
   }
 })();
 

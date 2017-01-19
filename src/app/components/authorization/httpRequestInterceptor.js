@@ -18,7 +18,7 @@
       responseError: function (response) {
         var AuthService = $injector.get('AuthorizationService');
 
-        if (response.status === 401 || response.status === 403 || response.status === -1) {
+        if (response.status === 401 || response.status === 403) {
           if(AuthService.getToken()){
             AuthService.logout();
           }
