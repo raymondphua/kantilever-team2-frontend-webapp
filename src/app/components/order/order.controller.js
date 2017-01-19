@@ -9,6 +9,7 @@
 
   function orderController(ShoppingCartService, OrderService, $rootScope, AuthorizationService, customer) {
     var vm = this;
+    var uploadingOrder = false;
 
     vm.init = function () {
       vm.products = ShoppingCartService.getAllCartProducts();
@@ -22,24 +23,28 @@
         shippingFee: vm.shippingFee,
         customer: vm.customer,
         orderedProducts: vm.products
-      }
+      };
     };
 
     vm.confirmOrder = function () {
-      if(!vm.divergentDeliveryAddress){
-        vm.order.deliveryAddress = vm.customer.address;
+      if(!uploadingOrder){
+        uploadingOrder = true;
+        if(!vm.divergentDeliveryAddress){
+          vm.order.deliveryAddress = vm.customer.address;
+        }
+        if(vm.invoiceAddressEqualsDeliveryAddress){
+          vm.order.invoiceAddress = vm.order.deliveryAddress;
+        }
+        else{
+          vm.order.invoiceAddress = vm.customer.address;
+        }
+        OrderService.createOrder(vm.order).$promise.then(function () {
+          vm.activeTab = 1;
+          $rootScope.$emit('cartUpdated', ShoppingCartService.clearCart());
+          vm.products = [];
+          uploadingOrder = false;
+        });
       }
-      if(vm.invoiceAddressEqualsDeliveryAddress){
-        vm.order.invoiceAddress = vm.order.deliveryAddress;
-      }
-      else{
-        vm.order.invoiceAddress = vm.customer.address;
-      }
-      OrderService.createOrder(vm.order).$promise.then(function () {
-        vm.activeTab = 1;
-        $rootScope.$emit('cartUpdated', ShoppingCartService.clearCart());
-        vm.products = [];
-      });
     };
   }
 })();
