@@ -1,0 +1,34 @@
+$footer_height : 200px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer_height + 30px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $footer_height;
+  background-color: $color_footer;
+  padding:15px;
+
+  .footer-map{
+    max-width: 100% !important;
+    height: 150px!important;
+  }
+
+  .footer-contact{
+    .footer-contact-head{
+      color: $color_head_text;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}
+
+
