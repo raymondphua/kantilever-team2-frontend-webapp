@@ -115,11 +115,15 @@
               <div class="col-sm-12">
                 <div class="thankyou-message">
                   Bedankt voor uw bestelling. Wij gaan ons best doen om uw bestelling zo snel mogelijk te verzenden.<br>
-                  Hieronder een bevestiging van uw order.
                 </div>
               </div>
             </div>
             <div class="order-invoice">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="/assets/images/logo.png" class="invoice-logo">
+                </div>
+              </div>
               <div class="row">
                 <div class="col-sm-2">
                   <div>{{vm.customer.name}}</div>
@@ -184,6 +188,29 @@
                       <td class="column-no-border column-border-top-dark column-bold">&euro;{{vm.order.totalPrice | number:2}}</td>
                     </tr>
                   </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="invoice-head">Algemene voorwaarden</div>
+                  <a href="assets/documents/voorwaarden.pdf" target="_blank">Algemene voorwaarden</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="invoice-head">Contactgegevens</div>
+                </div>
+                <div class="col-sm-6">
+                  <div>Kantilever B.V.</div>
+                  <div>Kruisboog 42</div>
+                  <div>3905 TG Veenendaal</div>
+                  <div>Tel: +31 318 552020</div>
+                </div>
+                <div class="col-sm-6">
+                  <div>Email: info@kantilever.nl</div>
+                  <div>IBAN: NL44 INGB 00058 54051</div>
+                  <div>K.v.K. 3013 5370</div>
+                  <div>BTW NL8062.30.277.B01</div>
                 </div>
               </div>
             </div>
