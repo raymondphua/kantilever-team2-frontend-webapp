@@ -91,3 +91,27 @@ h1.title{
 a{
   cursor: pointer!important;
 }
+
+.column-no-border{
+  border:none !important;
+}
+
+.column-border-left{
+  border-left: 1px solid #ddd;
+}
+
+.column-border-right{
+  border-right: 1px solid #ddd;
+}
+
+.column-border-bottom{
+  border-bottom: 1px solid #ddd;
+}
+
+.column-bold{
+  font-weight: bold;
+}
+
+.column-border-top-dark{
+  border-top: 1px solid black !important;
+}

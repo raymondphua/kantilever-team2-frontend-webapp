@@ -117,3 +117,15 @@
 .table-cell-border-top{
   border-top: 1px solid $color_border;
 }
+
+.thankyou-message{
+  margin-bottom: 15px;
+}
+
+.order-invoice{
+  border: 1px solid $color_border;
+  padding:15px;
+  .table{
+    margin-top:15px;
+  }
+}

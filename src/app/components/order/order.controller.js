@@ -7,13 +7,14 @@
 
   /** @ngInject */
 
-  function orderController(ShoppingCartService, OrderService, $rootScope, AuthorizationService, customer) {
+  function orderController(ShoppingCartService, OrderService, $rootScope, customer, ResourceService) {
     var vm = this;
     var uploadingOrder = false;
 
     vm.init = function () {
       vm.products = ShoppingCartService.getAllCartProducts();
-      vm.productsTotalPrice = ShoppingCartService.getCartProductsTotalPrice();
+      vm.productsTotalPrice = ShoppingCartService.getCartProductsTotalPriceIncludingVat();
+      vm.productsTotalPriceExlusiveVat = ShoppingCartService.getCartProductsTotalPrice();
       vm.productsTotalItems = ShoppingCartService.getCartProductsTotalItems();
       vm.shippingFee = 20;
       vm.customer = customer;
@@ -24,6 +25,7 @@
         customer: vm.customer,
         orderedProducts: vm.products
       };
+
     };
 
     vm.confirmOrder = function () {
@@ -38,11 +40,15 @@
         else{
           vm.order.invoiceAddress = vm.customer.address;
         }
-        OrderService.createOrder(vm.order).$promise.then(function () {
-          vm.activeTab = 1;
-          $rootScope.$emit('cartUpdated', ShoppingCartService.clearCart());
-          vm.products = [];
-          uploadingOrder = false;
+
+        OrderService.createOrder(vm.order).then(function (response) {
+          ResourceService(response.newOrderLocation).get().$promise.then(function (order) {
+            vm.order = order;
+            vm.activeTab = 1;
+            $rootScope.$emit('cartUpdated', ShoppingCartService.clearCart());
+            vm.products = [];
+            uploadingOrder = false;
+          });
         });
       }
     };

@@ -27,14 +27,14 @@
             <table class="table-full-width">
               <tr>
                 <td>Totaal artikelen({{vm.products.length}})</td>
-                <td class="text-align-right">&euro; {{vm.productsTotalPrice | number : 2}}</td>
+                <td class="text-align-right">&euro; {{vm.productsTotalPriceExlusiveVat | number : 2}}</td>
               </tr>
               <tr>
                 <td>Verzendkosten</td>
                 <td class="text-align-right">&euro; {{vm.shippingFee | number:2}}</td>
               </tr>
               <tr class="table-cell-border-top">
-                <td>Totaal</td>
+                <td>Totaal inclusief BTW</td>
                 <td class="text-align-right">&euro; {{vm.productsTotalPrice + vm.shippingFee | number:2}}</td>
               </tr>
             </table>
@@ -111,8 +111,81 @@
             </form>
           </uib-tab>
           <uib-tab heading="2. Bevestiging" disable="true">
-            <div class="thankyou-message">
-              Bedankt voor uw bestelling. Wij gaan ons best doen om uw bestelling zo snel mogelijk te verzenden.
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="thankyou-message">
+                  Bedankt voor uw bestelling. Wij gaan ons best doen om uw bestelling zo snel mogelijk te verzenden.<br>
+                  Hieronder een bevestiging van uw order.
+                </div>
+              </div>
+            </div>
+            <div class="order-invoice">
+              <div class="row">
+                <div class="col-sm-2">
+                  <div>{{vm.customer.name}}</div>
+                  <div>{{vm.order.invoiceAddress.address}}</div>
+                  <div>{{vm.order.invoiceAddress.zip}}</div>
+                  <div>{{vm.order.invoiceAddress.city}}</div>
+                </div>
+                <div class="col-sm-4 col-sm-offset-6">
+                  <table>
+                    <tr>
+                      <td>Ordernummer:</td>
+                      <td class="text-align-right">{{vm.order.id}}</td>
+                    </tr>
+                    <tr>
+                      <td>Klantnummer:</td>
+                      <td class="text-align-right">{{vm.order.customer.id}}</td>
+                    </tr><tr>
+                    <td>Gemaakt op:</td>
+                    <td class="text-align-right">{{vm.order.orderDate}}</td>
+                  </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table">
+                    <tr>
+                      <th>Artikelnummer</th>
+                      <th>Artikelnaam</th>
+                      <th>Aantal</th>
+                      <th>Bedrag</th>
+                      <th>BTW</th>
+                      <th>Totaalbedrag</th>
+                    </tr>
+                    <tr ng-repeat="product in vm.order.orderedProducts">
+                      <td>{{product.id}}</td>
+                      <td>{{product.name}}</td>
+                      <td>{{product.quantity}}</td>
+                      <td>&euro;{{product.price | number:2}}</td>
+                      <td>21%</td>
+                      <td>&euro;{{product.price * product.quantity | number:2}}</td>
+                    </tr>
+                    <tr><td colspan="6"></td></tr>
+                    <tr>
+                      <td colspan="4" class="column-no-border"></td>
+                      <td class="column-no-border">Totaal exlusief btw</td>
+                      <td class="column-no-border">&euro;{{vm.productsTotalPriceExlusiveVat | number:2}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="column-no-border"></td>
+                      <td class="column-no-border">Transportkosten</td>
+                      <td class="column-no-border">&euro;{{vm.order.shippingFee | number:2}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="column-no-border"></td>
+                      <td class="column-no-border">BTW</td>
+                      <td class="column-no-border">&euro;{{vm.productsTotalPriceExlusiveVat * 1.21 - vm.productsTotalPriceExlusiveVat  | number:2}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="column-no-border"></td>
+                      <td class="column-no-border column-border-top-dark column-bold">Totaalbedrag</td>
+                      <td class="column-no-border column-border-top-dark column-bold">&euro;{{vm.order.totalPrice | number:2}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
           </uib-tab>
         </uib-tabset>
