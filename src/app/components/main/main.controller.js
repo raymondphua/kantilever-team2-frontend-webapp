@@ -9,6 +9,8 @@
   function MainController(CatalogService) {
     var vm = this;
 
-    vm.products = CatalogService.getAllProducts();
+    CatalogService.getAllProducts().$promise.then(function (response) {
+      vm.products = response.items;
+    });
   }
 })();
