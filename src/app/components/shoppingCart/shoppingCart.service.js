@@ -14,6 +14,7 @@
       findProductInCart: findProductInCart,
       getAllCartProducts: getAllCartProducts,
       getCartProductsTotalPrice: getCartProductsTotalPrice,
+      getCartProductsTotalPriceIncludingVat: getCartProductsTotalPriceIncludingVat,
       getCartProductsTotalItems: getCartProductsTotalItems,
       clearCart: clearCart
     };
@@ -55,7 +56,17 @@
     }
 
     function getAllCartProducts() {
-      return $localStorage.items;
+      if($localStorage.items){
+        var products = $localStorage.items;
+        products.forEach(function (product) {
+          product.totalPrice = product.price * product.quantity;
+        });
+
+        return products;
+      }
+      else{
+        return [];
+      }
     }
 
 
@@ -63,6 +74,14 @@
       var total = 0;
       $localStorage.items.forEach(function(product) {
         total += product.quantity * product.price;
+      });
+      return total;
+    }
+
+    function getCartProductsTotalPriceIncludingVat() {
+      var total = 0;
+      $localStorage.items.forEach(function(product) {
+        total += product.quantity * product.price * 1.21;
       });
 
       return total;
