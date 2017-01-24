@@ -13,7 +13,6 @@
     vm.init = function () {
 
       CatalogService.getAllProducts().$promise.then(function(response){
-        vm.products = response.items;
         vm.setPriceSlider(response.items);
       });
 
@@ -40,6 +39,7 @@
         }
       });
 
+      vm.itemsPerPage = 3;
       vm.maxPrice = null;
       vm.categoryDefaultFilterLimit = 10;
       vm.categoryFilterLimit = vm.categoryDefaultFilterLimit;
@@ -51,6 +51,7 @@
         vm.currentPage = pageNo;
       };
 
+      vm.currentPage = 1;
       vm.getProducts();
     };
 
@@ -85,14 +86,12 @@
 
       CatalogService.getAllProducts(queryParams).$promise.then(function (response) {
         vm.listItems = response.items;
-        vm.totalItems = response.length;
-        vm.currentPage = 1;
-        vm.setPriceSlider(response.items);
+        vm.totalItems = response.total;
       });
     };
 
     var getFilterParams = function () {
-      var queryParams = {categories: "", brands: "", price : null, name: ""};
+      var queryParams = {categories: "", brands: "", price : null, name: "", page: vm.currentPage -1, size: vm.itemsPerPage};
 
       if(vm.categoryFilters){
         Object.keys(vm.categoryFilters).forEach(function (key) {

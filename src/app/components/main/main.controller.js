@@ -9,11 +9,7 @@
   function MainController(CatalogService) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1483973234259;
-
-    CatalogService.getAllProducts().$promise.then(function(response){
+    CatalogService.getAllProducts().$promise.then(function (response) {
       vm.products = response.items;
     });
   }
