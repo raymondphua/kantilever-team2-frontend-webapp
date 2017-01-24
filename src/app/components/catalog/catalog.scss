@@ -67,6 +67,9 @@
     background-position: top;
   }
   .product-detail-description-container{
+    .product-detail-description{
+      white-space: pre;
+    }
     .product-detail-price{
       font-size: 30px;
       color: $color_secondary;
