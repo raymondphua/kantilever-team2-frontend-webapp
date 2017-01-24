@@ -22,7 +22,7 @@
       'app.main',
       'app.catalog',
       'app.shoppingCart',
-      // 'app.login',
-      'app.order']);
+      'app.order',
+      'app.registration']);
 
 })();

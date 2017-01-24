@@ -13,7 +13,8 @@
     vm.classAnimation = '';
     vm.creationDate = 1483973234259;
 
-    vm.products = CatalogService.getAllProducts();
-
+    CatalogService.getAllProducts().$promise.then(function(response){
+      vm.products = response.items;
+    });
   }
 })();

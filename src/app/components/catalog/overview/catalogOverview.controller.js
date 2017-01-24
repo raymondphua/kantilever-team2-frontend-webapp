@@ -13,8 +13,8 @@
     vm.init = function () {
 
       CatalogService.getAllProducts().$promise.then(function(response){
-        vm.products = response;
-        vm.setPriceSlider(response);
+        vm.products = response.items;
+        vm.setPriceSlider(response.items);
       });
 
       CatalogService.getAllCategories().$promise.then(function (response) {
@@ -40,7 +40,6 @@
         }
       });
 
-      vm.itemsPerPage = 3;
       vm.maxPrice = null;
       vm.categoryDefaultFilterLimit = 10;
       vm.categoryFilterLimit = vm.categoryDefaultFilterLimit;
@@ -85,10 +84,10 @@
       var queryParams = getFilterParams();
 
       CatalogService.getAllProducts(queryParams).$promise.then(function (response) {
-        vm.listItems = response;
+        vm.listItems = response.items;
         vm.totalItems = response.length;
         vm.currentPage = 1;
-        vm.setPriceSlider(response);
+        vm.setPriceSlider(response.items);
       });
     };
 
