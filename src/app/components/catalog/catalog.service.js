@@ -17,7 +17,7 @@
     };
 
     function getAllProducts(queryParams) {
-      return ResourceService(serviceBase + "catalog/products", queryParams).query();
+      return ResourceService(serviceBase + "catalog/products", queryParams).get();
     }
 
     function getAllCategories(queryParams) {

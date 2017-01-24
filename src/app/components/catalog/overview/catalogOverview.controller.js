@@ -13,8 +13,7 @@
     vm.init = function () {
 
       CatalogService.getAllProducts().$promise.then(function(response){
-        vm.products = response;
-        vm.setPriceSlider(response);
+        vm.setPriceSlider(response.items);
       });
 
       CatalogService.getAllCategories().$promise.then(function (response) {
@@ -52,6 +51,7 @@
         vm.currentPage = pageNo;
       };
 
+      vm.currentPage = 1;
       vm.getProducts();
     };
 
@@ -85,15 +85,13 @@
       var queryParams = getFilterParams();
 
       CatalogService.getAllProducts(queryParams).$promise.then(function (response) {
-        vm.listItems = response;
-        vm.totalItems = response.length;
-        vm.currentPage = 1;
-        vm.setPriceSlider(response);
+        vm.listItems = response.items;
+        vm.totalItems = response.total;
       });
     };
 
     var getFilterParams = function () {
-      var queryParams = {categories: "", brands: "", price : null, name: ""};
+      var queryParams = {categories: "", brands: "", price : null, name: "", page: vm.currentPage -1, size: vm.itemsPerPage};
 
       if(vm.categoryFilters){
         Object.keys(vm.categoryFilters).forEach(function (key) {
