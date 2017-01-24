@@ -6,21 +6,23 @@
     .controller('RegistrationController', RegistrationController);
 
   /** @ngInject */
-  function RegistrationController() {
+  function RegistrationController(AuthorizationService) {
     var vm = this;
 
     vm.customer = { address: {}};
-    vm.available = false;
+    vm.available = true;
+    vm.passwordMatch = true;
 
     vm.checkEmail = function() {
-      vm.available = !vm.available;
+      if (vm.customer.email) {
+        AuthorizationService.checkAvailableEmail(vm.customer.email).$promise.then(function(available) {
+          vm.available = available.valid;
+        });
+      }
     };
 
     vm.checkPassword = function() {
-      if (vm.customer.password === vm.customer.passwordRepeat) {
-        return true;
-      }
-      return false;
+      vm.passwordMatch = vm.customer.password === vm.customer.passwordRepeat;
     };
 
     vm.register = function() {
