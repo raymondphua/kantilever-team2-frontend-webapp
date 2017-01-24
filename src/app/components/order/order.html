@@ -50,7 +50,7 @@
               <div class="order-address" ng-hide="vm.divergentDeliveryAddress">
                 <div class="order-headline">Afleveradres</div>
                 <div>{{vm.customer.name}}</div>
-                <div>{{vm.customer.address.address}}</div>
+                <div>{{vm.customer.address.street}} {{vm.customer.address.houseNumber}}</div>
                 <div>{{vm.customer.address.zip}} {{vm.customer.address.city}}</div>
                 <a class="other-address-button" ng-click="vm.divergentDeliveryAddress = true" ng-hide="vm.divergentDeliveryAddress">Kies een ander afleveradres</a>
               </div>
@@ -65,7 +65,10 @@
                   <div class="form-group">
                     <label for="address" class="col-sm-2">Adres</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="address" ng-value="vm.customer.address.address" ng-model="vm.order.deliveryAddress.address">
+                      <input type="text" class="form-control" id="address" placeholder="straat" ng-value="vm.customer.address.street" ng-model="vm.order.deliveryAddress.street">
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" id="housenumber" placeholder="huisnummer" ng-value="vm.customer.address.houseNumber" ng-model="vm.order.deliveryAddress.houseNumber">
                     </div>
                   </div>
                   <div class="form-group">
@@ -127,19 +130,19 @@
               <div class="row">
                 <div class="col-sm-2">
                   <div>{{vm.customer.name}}</div>
-                  <div>{{vm.order.invoiceAddress.address}}</div>
+                  <div>{{vm.order.invoiceAddress.street}} {{vm.order.invoiceAddress.houseNumber}}</div>
                   <div>{{vm.order.invoiceAddress.zip}}</div>
                   <div>{{vm.order.invoiceAddress.city}}</div>
                 </div>
-                <div class="col-sm-4 col-sm-offset-6">
+                <div class="col-sm-5 col-sm-offset-5">
                   <table>
                     <tr>
                       <td>Ordernummer:</td>
-                      <td class="text-align-right">{{vm.order.id}}</td>
+                      <td class="text-align-right">{{vm.order.orderKey}}</td>
                     </tr>
                     <tr>
                       <td>Klantnummer:</td>
-                      <td class="text-align-right">{{vm.order.customer.id}}</td>
+                      <td class="text-align-right">{{vm.order.customer.customerKey}}</td>
                     </tr><tr>
                     <td>Gemaakt op:</td>
                     <td class="text-align-right">{{vm.order.orderDate}}</td>
@@ -155,35 +158,33 @@
                       <th>Artikelnaam</th>
                       <th>Aantal</th>
                       <th>Bedrag</th>
-                      <th>BTW</th>
                       <th>Totaalbedrag</th>
                     </tr>
                     <tr ng-repeat="product in vm.order.orderedProducts">
-                      <td>{{product.id}}</td>
+                      <td>{{product.productKey}}</td>
                       <td>{{product.name}}</td>
                       <td>{{product.quantity}}</td>
                       <td>&euro;{{product.price | number:2}}</td>
-                      <td>21%</td>
                       <td>&euro;{{product.price * product.quantity | number:2}}</td>
                     </tr>
-                    <tr><td colspan="6"></td></tr>
+                    <tr><td colspan="5"></td></tr>
                     <tr>
-                      <td colspan="4" class="column-no-border"></td>
+                      <td colspan="3" class="column-no-border"></td>
                       <td class="column-no-border">Totaal exlusief btw</td>
                       <td class="column-no-border">&euro;{{vm.productsTotalPriceExlusiveVat | number:2}}</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="column-no-border"></td>
+                      <td colspan="3" class="column-no-border"></td>
                       <td class="column-no-border">Transportkosten</td>
                       <td class="column-no-border">&euro;{{vm.order.shippingFee | number:2}}</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="column-no-border"></td>
-                      <td class="column-no-border">BTW</td>
+                      <td colspan="3" class="column-no-border"></td>
+                      <td class="column-no-border">21% BTW</td>
                       <td class="column-no-border">&euro;{{vm.productsTotalPriceExlusiveVat * 1.21 - vm.productsTotalPriceExlusiveVat  | number:2}}</td>
                     </tr>
                     <tr>
-                      <td colspan="4" class="column-no-border"></td>
+                      <td colspan="3" class="column-no-border"></td>
                       <td class="column-no-border column-border-top-dark column-bold">Totaalbedrag</td>
                       <td class="column-no-border column-border-top-dark column-bold">&euro;{{vm.order.totalPrice | number:2}}</td>
                     </tr>

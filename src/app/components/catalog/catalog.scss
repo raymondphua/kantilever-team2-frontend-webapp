@@ -68,7 +68,7 @@
   }
   .product-detail-description-container{
     .product-detail-description{
-      white-space: pre;
+      white-space: pre-line;
     }
     .product-detail-price{
       font-size: 30px;
@@ -81,6 +81,7 @@
       background: $color_button;
       color:white;
       cursor: pointer;
+      margin-bottom: 15px;
     }
   }
 }
