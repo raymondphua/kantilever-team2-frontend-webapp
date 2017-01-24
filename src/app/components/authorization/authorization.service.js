@@ -18,7 +18,8 @@
       login: login,
       logout: logout,
       setUser: setUser,
-      checkAvailableEmail: checkAvailableEmail
+      checkAvailableEmail: checkAvailableEmail,
+      registerUser: registerUser
     };
 
     function getToken(){
