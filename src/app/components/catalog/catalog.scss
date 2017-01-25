@@ -70,9 +70,16 @@
     .product-detail-description{
       white-space: pre-line;
     }
+    .product-detail-brand{
+      white-space: pre-line;
+      margin-bottom: 15px;
+    }
     .product-detail-price{
       font-size: 30px;
       color: $color_secondary;
+    }
+    .product-detail-subtitle{
+      font-weight: bold;
     }
     .btn-cart{
       border-radius: 0;

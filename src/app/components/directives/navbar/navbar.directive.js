@@ -34,10 +34,10 @@
 
         vm.trees = [{
           name: "Zoek producten",
-          link: "#",
+          link: "catalog",
           subtree: [{
             name: "Categorieën",
-            link: "#",
+            link: "catalog",
             subtree: subCategories
           }]
         }];
@@ -50,7 +50,7 @@
           var subBrands = [];
           var subTree = {
             name: "Merken",
-            link: "#",
+            link: "catalog",
             subtree: subBrands
           };
 

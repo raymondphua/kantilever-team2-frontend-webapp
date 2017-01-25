@@ -71,14 +71,12 @@
                   </div>
                   <div class="category-name" style="text-align: right">{{product.name}}</div>
                   <div class="category-name" style="text-align: right">{{product.brand.name}}</div>
-                  <div class="product-price" style="float: right">&euro;{{product.price}}</div>
+                  <div class="product-price" style="float: right">{{product.price | currency:'€'}}</div>
                 </div>
               </div>
 
               <div class="col-sm-12">
-                <div class="col-sm-12">
-                  <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.getProducts()" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
-                </div>
+                <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.getProducts()" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
               </div>
             </div>
           </div>

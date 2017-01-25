@@ -9,6 +9,11 @@
 
     <div class="col-sm-12">
       <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="subtitle">Een selectie van onze artikelen</div>
+          </div>
+        </div>
         <div class="row catalog-categories">
 
           <div ng-repeat="product in vm.products | limitTo :4" class="col-sm-3" ui-sref="catalog-product({productId: product.id, product: product})">
@@ -18,7 +23,7 @@
                 <div class="category-image" style="background-image: url('{{product.imgUrl}}')"></div>
               </div>
               <div class="category-name" style="text-align: right">{{product.name}}</div>
-              <div class="product-price" style="float: right">&euro; {{product.price | number:2}}</div>
+              <div class="product-price" style="float: right">{{product.price | currency:'€'}}</div>
             </div>
           </div>
         </div>
