@@ -17,7 +17,9 @@
       getUserByEmail: getUserByEmail,
       login: login,
       logout: logout,
-      setUser: setUser
+      setUser: setUser,
+      checkAvailableEmail: checkAvailableEmail,
+      registerUser: registerUser
     };
 
     function getToken(){
@@ -89,6 +91,14 @@
       $rootScope.user = null;
       PermPermissionStore.removePermissionDefinition('user');
       $http.defaults.headers.common['Authorization']= undefined;
+    }
+
+    function checkAvailableEmail(email) {
+      return ResourceService(serviceBase + "customerservice/customers/validate/email").post({email:  email});
+    }
+
+    function registerUser(user) {
+      return ResourceService(serviceBase + "customerservice/customers").post(user);
     }
   }
 })();

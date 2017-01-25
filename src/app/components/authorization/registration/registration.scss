@@ -1,0 +1,16 @@
+.centered-form{
+  margin-top: 60px;
+}
+
+.panel{
+  background: $color_authoriation_background;
+  border:none;
+  .panel-title{
+    color: $color_head_text;
+    font-size: 20px;
+  }
+}
+
+.error {
+  color: $color_error;
+}

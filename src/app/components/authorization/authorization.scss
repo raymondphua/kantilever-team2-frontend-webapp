@@ -14,16 +14,13 @@
 }
 
 .card {
-  background-color: #F7F7F7;
+  background-color: $color_authoriation_background;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .profile-name-card {
@@ -73,11 +70,9 @@
 }
 
 .btn.btn-signin {
-  /*background-color: #4d90fe; */
-  background-color: rgb(104, 145, 162);
-  /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+  background-color: $color_authorization_submit_button;
   padding: 0px;
-  font-weight: 700;
+  font-weight: normal;
   font-size: 14px;
   height: 36px;
   -moz-border-radius: 3px;
@@ -108,7 +103,7 @@
 }
 
 .notification {
-  border: 1px solid #d12c2a;
+  border: 1px solid $color_error;
   border-radius: .25em;
   padding: .75em;
   margin-bottom: 10px;

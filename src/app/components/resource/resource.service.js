@@ -11,6 +11,7 @@
       var defaults = {
         update: { method: 'put', isArray: false },
         create: { method: 'post' },
+        post: { method: 'post'},
         saveAsFormEncoded: {
           method: 'POST',
           headers: {
