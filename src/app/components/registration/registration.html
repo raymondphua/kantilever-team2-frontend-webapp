@@ -6,7 +6,7 @@
           <h3 class="panel-title">Registreren voor Kantilever</h3>
         </div>
         <div class="panel-body">
-          <form name="vm.registerForm" ng-submit="vm.register()" novalidate>
+          <form name="vm.registerForm" ng-submit="vm.available && vm.registerForm.$valid && vm.passwordMatch && vm.register()" novalidate>
             <div class="form-group">
               <input type="email" ng-model="vm.customer.email" ng-blur="vm.checkEmail()" name="email" id="email" class="form-control input-sm" placeholder="Email Adres" ng-required="true">
               <span class="error" ng-show="vm.customer.email && !vm.available">Emailadres is al in gebruik!</span>
@@ -16,6 +16,11 @@
             <div class="form-group">
               <input type="text" ng-model="vm.customer.name" name="name" id="first_name" class="form-control input-sm floatlabel" placeholder="Naam" ng-required="true">
               <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.name.$invalid">Naam veld is verplicht!</span>
+            </div>
+
+            <div class="form-group">
+              <input type="number" ng-model="vm.customer.phone" name="phone" id="phone" class="form-control input-sm floatlabel" placeholder="Telefoonnummer" ng-required="true">
+              <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.phone.$invalid">Vul een geldige telefoonnummer in!</span>
             </div>
 
             <div class="form-group">

@@ -6,7 +6,7 @@
     .controller('RegistrationController', RegistrationController);
 
   /** @ngInject */
-  function RegistrationController(AuthorizationService) {
+  function RegistrationController(AuthorizationService, $state) {
     var vm = this;
 
     vm.customer = { address: {}};
@@ -26,7 +26,11 @@
     };
 
     vm.register = function() {
-      console.log(vm.customer);
+      AuthorizationService.registerUser(vm.customer).$promise.then(function() {
+        AuthorizationService.login(vm.customer).$promise.then(function() {
+          $state.go('home');
+        });
+      });
     }
   }
 })();
