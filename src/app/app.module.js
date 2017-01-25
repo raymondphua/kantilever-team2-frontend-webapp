@@ -22,7 +22,6 @@
       'app.main',
       'app.catalog',
       'app.shoppingCart',
-      'app.order',
-      'app.registration']);
+      'app.order']);
 
 })();

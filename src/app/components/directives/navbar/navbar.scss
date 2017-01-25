@@ -28,6 +28,7 @@
       color:$color_head_text !important;
     }
     &.no-hover{
+      cursor: default !important;
       &:hover{
         color: black !important;
       }

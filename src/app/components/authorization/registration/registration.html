@@ -1,0 +1,75 @@
+<div ng-init="vm.init()">
+  <div class="container">
+    <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Registreren voor Kantilever</h3>
+          </div>
+          <div class="panel-body">
+            <form name="vm.registerForm" ng-submit="vm.available && vm.registerForm.$valid && vm.passwordMatch && vm.register()" novalidate>
+              <div class="form-group">
+                <input type="email" ng-model="vm.customer.email" ng-blur="vm.checkEmail()" name="email" id="email" class="form-control input-sm" placeholder="Email Adres" ng-required="true">
+                <span class="error" ng-show="vm.customer.email && !vm.available">Dit mailadres is al in gebruik</span>
+                <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.email.$invalid">Vul een geldig emailadres in</span>
+              </div>
+
+              <div class="form-group">
+                <input type="text" ng-model="vm.customer.name" name="name" id="first_name" class="form-control input-sm floatlabel" placeholder="Naam" ng-required="true">
+                <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.name.$invalid">Naam veld is verplicht</span>
+              </div>
+
+              <div class="form-group">
+                <input type="text" ng-model="vm.customer.phone" name="phone" id="phone" class="form-control input-sm floatlabel" placeholder="Telefoonnummer" ng-required="true">
+                <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.phone.$invalid">Vul een geldige telefoonnummer in</span>
+              </div>
+
+              <div class="form-group">
+                <input ng-model="vm.customer.password" type="password" name="password" id="password" class="form-control input-sm" placeholder="Wachtwoord" ng-required="true">
+                <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.password.$invalid">Wachtwoord veld is verplicht</span>
+              </div>
+
+              <div class="form-group">
+                <input type="password" ng-model="vm.customer.passwordRepeat" ng-blur="vm.checkPassword()" name="passwordRepeat" id="password_confirmation" class="form-control input-sm" placeholder="Bevestig Wachtwoord" ng-required="true">
+                <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.password.$invalid">Bevestig Wachtwoord veld is verplicht</span>
+                <span class="error" ng-show="!vm.passwordMatch">Wachtwoord komt niet overeen</span>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" ng-model="vm.customer.address.street" name="street" id="straat" class="form-control input-sm" placeholder="Straat" ng-required="true">
+                    <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.street.$invalid">Straat veld is verplicht</span>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" ng-model="vm.customer.address.houseNumber" name="number" id="nummer" class="form-control input-sm" placeholder="Huis nummer" ng-required="true">
+                    <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.number.$invalid">Huisnummer is verplicht</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" ng-model="vm.customer.address.city" name="city" id="Plaats" class="form-control input-sm" placeholder="Plaats" ng-required="true">
+                    <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.city.$invalid">Plaats is verplicht</span>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" ng-model="vm.customer.address.zip" name="zip" id="Postcode" class="form-control input-sm" placeholder="Postcode" ng-required="true">
+                    <span class="error" ng-show="vm.registerForm.$submitted && vm.registerForm.zip.$invalid">Postcode is verplicht</span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Registreren</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

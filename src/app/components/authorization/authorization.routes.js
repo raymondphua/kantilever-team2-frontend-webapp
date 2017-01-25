@@ -10,7 +10,7 @@
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'app/components/authorization/login.html',
+        templateUrl: 'app/components/authorization/login/login.html',
         controller: 'LoginController',
         controllerAs: 'vm',
         data: {
@@ -19,7 +19,14 @@
             redirectTo: 'home'
           }
         }
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'app/components/authorization/registration/registration.html',
+        controller: 'RegistrationController',
+        controllerAs: 'vm'
       });
+
   }
 })();
 
