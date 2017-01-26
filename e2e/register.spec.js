@@ -11,7 +11,7 @@
       page = new RegisterPage();
     });
 
-    fit('entering correct input should set all the fields', function () {
+    it('entering correct input should set all the fields', function () {
 
       page.typeEmail("test@email.com");
       page.typeName("Test");
@@ -34,7 +34,7 @@
       expect(page.zip.getAttribute('value')).toEqual('1234AB');
     });
 
-    fit('entering existing email should show error span', function () {
+    it('entering existing email should show error span', function () {
 
       page.typeEmail("pieter@hotmail.com");
       page.typeName("test");
@@ -43,7 +43,7 @@
       expect(element(by.id('emailInUse')).getText()).toEqual('Dit emailadres is al in gebruik');
     });
 
-    fit('Submitting an empty form should show errors for all fields', function () {
+    it('Submitting an empty form should show errors for all fields', function () {
 
       page.register();
 
@@ -58,7 +58,7 @@
       expect(element(by.id('zipRequired')).getText()).toEqual('Postcode is verplicht');
     });
 
-    fit('If passwords dont match, show error', function () {
+    it('If passwords dont match, show error', function () {
 
       page.typePassword("test");
       page.typePasswordRepeat("te");
