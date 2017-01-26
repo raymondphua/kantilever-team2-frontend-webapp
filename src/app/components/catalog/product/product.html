@@ -19,11 +19,15 @@
             <div class="col-sm-8">
               <h1 class="title white">
                 {{vm.product.name}}
-                <div class="product-detail-supplier-id">{{vm.product.supplierProductId}}</div>
               </h1>
 
               <div class="product-detail-description-container">
-                <div class="product-detail-price">&euro;{{vm.product.price}}</div>
+                <div class="product-detail-price">{{vm.product.price | currency:'€'}}</div>
+                <div class="product-detail-subtitle">Artikelnummer</div>
+                <div class="product-detail-brand">{{vm.product.productKey}}</div>
+                <div class="product-detail-subtitle">Merk</div>
+                <div class="product-detail-brand">{{vm.product.brand.name}}</div>
+                <div class="product-detail-subtitle">Omschrijving</div>
                 <div class="product-detail-description">{{vm.product.description}}</div>
                 <button class="btn btn-cart" ng-click="vm.addProductToCart()">BESTEL NU</button>
               </div>
