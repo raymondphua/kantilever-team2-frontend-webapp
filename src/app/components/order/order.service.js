@@ -7,18 +7,32 @@
 
   /** @ngInject */
 
-  function orderService(ResourceService, serviceBase) {
+  function orderService(ResourceService, serviceBase, $q) {
     return {
       createOrder: createOrder,
-      getAllOrders: getAllOrders
+      getAllOrders: getAllOrders,
+      getOrderById: getOrderById
     };
 
     function createOrder(order) {
-      return ResourceService(serviceBase + "orderservice/orders").create(order);
+      var defer = $q.defer();
+
+      ResourceService(serviceBase + "orderservice/orders").create(order, function (data, headers) {
+        var newOrderLocation = headers('Location');
+        var response = {newOrderLocation: newOrderLocation};
+        defer.resolve(response)
+      }, function (error) {
+        defer.reject(error);
+      });
+      return defer.promise;
     }
 
     function getAllOrders(){
-      ResourceService(serviceBase + "orderservice/orders").query();
+      return ResourceService(serviceBase + "orderservice/orders").query();
+    }
+
+    function getOrderById(id){
+      return ResourceService(serviceBase + "orderservice/orders/" + id).get();
     }
   }
 })();

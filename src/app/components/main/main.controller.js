@@ -9,11 +9,8 @@
   function MainController(CatalogService) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1483973234259;
-
-    vm.products = CatalogService.getAllProducts();
-
+    CatalogService.getAllProducts({page: 0, size: 4}).$promise.then(function (response) {
+      vm.products = response.items;
+    });
   }
 })();

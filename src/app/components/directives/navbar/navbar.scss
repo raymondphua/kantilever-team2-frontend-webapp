@@ -1,5 +1,6 @@
 .navbar{
   height:100%;
+  background-color: $color_header;
   .navbar-brand{
     height:130px;
     .navbar-logo{
@@ -28,6 +29,7 @@
       color:$color_head_text !important;
     }
     &.no-hover{
+      cursor: default !important;
       &:hover{
         color: black !important;
       }

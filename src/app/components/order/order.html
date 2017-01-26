@@ -27,15 +27,15 @@
             <table class="table-full-width">
               <tr>
                 <td>Totaal artikelen({{vm.products.length}})</td>
-                <td class="text-align-right">&euro; {{vm.productsTotalPrice | number : 2}}</td>
+                <td class="text-align-right">{{vm.productsTotalPriceExlusiveVat | currency:'€'}}</td>
               </tr>
               <tr>
                 <td>Verzendkosten</td>
-                <td class="text-align-right">&euro; {{vm.shippingFee | number:2}}</td>
+                <td class="text-align-right">{{vm.shippingFee | currency:'€'}}</td>
               </tr>
               <tr class="table-cell-border-top">
-                <td>Totaal</td>
-                <td class="text-align-right">&euro; {{vm.productsTotalPrice + vm.shippingFee | number:2}}</td>
+                <td>Totaal inclusief BTW</td>
+                <td class="text-align-right">{{vm.productsTotalPrice + vm.shippingFee | currency:'€'}}</td>
               </tr>
             </table>
             <span></span>
@@ -50,7 +50,7 @@
               <div class="order-address" ng-hide="vm.divergentDeliveryAddress">
                 <div class="order-headline">Afleveradres</div>
                 <div>{{vm.customer.name}}</div>
-                <div>{{vm.customer.address.address}}</div>
+                <div>{{vm.customer.address.street}} {{vm.customer.address.houseNumber}}</div>
                 <div>{{vm.customer.address.zip}} {{vm.customer.address.city}}</div>
                 <a class="other-address-button" ng-click="vm.divergentDeliveryAddress = true" ng-hide="vm.divergentDeliveryAddress">Kies een ander afleveradres</a>
               </div>
@@ -65,7 +65,10 @@
                   <div class="form-group">
                     <label for="address" class="col-sm-2">Adres</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="address" ng-value="vm.customer.address.address" ng-model="vm.order.deliveryAddress.address">
+                      <input type="text" class="form-control" id="address" placeholder="straat" ng-value="vm.customer.address.street" ng-model="vm.order.deliveryAddress.street">
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" id="housenumber" placeholder="huisnummer" ng-value="vm.customer.address.houseNumber" ng-model="vm.order.deliveryAddress.houseNumber">
                     </div>
                   </div>
                   <div class="form-group">
@@ -92,7 +95,7 @@
                 </div>
                 <div ng-show="!vm.invoiceAddressEqualsDeliveryAddress">
                   <div>{{vm.customer.name}}</div>
-                  <div>{{vm.customer.address.address}}</div>
+                  <div>{{vm.customer.address.street}} {{vm.customer.address.houseNumber}}</div>
                   <div>{{vm.customer.address.zip}} {{vm.customer.address.city}}</div>
                 </div>
               </div>
@@ -111,8 +114,106 @@
             </form>
           </uib-tab>
           <uib-tab heading="2. Bevestiging" disable="true">
-            <div class="thankyou-message">
-              Bedankt voor uw bestelling. Wij gaan ons best doen om uw bestelling zo snel mogelijk te verzenden.
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="thankyou-message">
+                  Bedankt voor uw bestelling. Wij gaan ons best doen om uw bestelling zo snel mogelijk te verzenden.<br>
+                </div>
+              </div>
+            </div>
+            <div class="order-invoice">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="/assets/images/logo.png" class="invoice-logo">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <div>{{vm.customer.name}}</div>
+                  <div>{{vm.order.invoiceAddress.street}} {{vm.order.invoiceAddress.houseNumber}}</div>
+                  <div>{{vm.order.invoiceAddress.zip}}</div>
+                  <div>{{vm.order.invoiceAddress.city}}</div>
+                </div>
+                <div class="col-sm-5 col-sm-offset-5">
+                  <table>
+                    <tr>
+                      <td>Ordernummer:</td>
+                      <td class="text-align-right">{{vm.order.orderKey}}</td>
+                    </tr>
+                    <tr>
+                      <td>Klantnummer:</td>
+                      <td class="text-align-right">{{vm.order.customer.customerKey}}</td>
+                    </tr><tr>
+                    <td>Gemaakt op:</td>
+                    <td class="text-align-right">{{vm.order.orderDate}}</td>
+                  </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table">
+                    <tr>
+                      <th>Artikelnummer</th>
+                      <th>Artikelnaam</th>
+                      <th>Aantal</th>
+                      <th>Bedrag</th>
+                      <th>Totaalbedrag</th>
+                    </tr>
+                    <tr ng-repeat="product in vm.order.orderedProducts">
+                      <td>{{product.productKey}}</td>
+                      <td>{{product.name}}</td>
+                      <td>{{product.quantity}}</td>
+                      <td>{{product.price | currency:'€'}}</td>
+                      <td>{{product.price * product.quantity | currency:'€'}}</td>
+                    </tr>
+                    <tr><td colspan="5"></td></tr>
+                    <tr>
+                      <td colspan="3" class="column-no-border"></td>
+                      <td class="column-no-border">Totaal exlusief btw</td>
+                      <td class="column-no-border">{{vm.productsTotalPriceExlusiveVat | currency:'€'}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="column-no-border"></td>
+                      <td class="column-no-border">Transportkosten</td>
+                      <td class="column-no-border">{{vm.order.shippingFee | currency:'€'}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="column-no-border"></td>
+                      <td class="column-no-border">21% BTW</td>
+                      <td class="column-no-border">{{vm.productsTotalPriceExlusiveVat * 1.21 - vm.productsTotalPriceExlusiveVat | currency:'€'}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" class="column-no-border"></td>
+                      <td class="column-no-border column-border-top-dark column-bold">Totaalbedrag</td>
+                      <td class="column-no-border column-border-top-dark column-bold">{{vm.order.totalPrice | currency:'€'}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="invoice-head">Algemene voorwaarden</div>
+                  <a href="assets/documents/voorwaarden.pdf" target="_blank">Algemene voorwaarden</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="invoice-head">Contactgegevens</div>
+                </div>
+                <div class="col-sm-6">
+                  <div>Kantilever B.V.</div>
+                  <div>Kruisboog 42</div>
+                  <div>3905 TG Veenendaal</div>
+                  <div>Tel: +31 318 552020</div>
+                </div>
+                <div class="col-sm-6">
+                  <div>Email: info@kantilever.nl</div>
+                  <div>IBAN: NL44 INGB 00058 54051</div>
+                  <div>K.v.K. 3013 5370</div>
+                  <div>BTW NL8062.30.277.B01</div>
+                </div>
+              </div>
             </div>
           </uib-tab>
         </uib-tabset>

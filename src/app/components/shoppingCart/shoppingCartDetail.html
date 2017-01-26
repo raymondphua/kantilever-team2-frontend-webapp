@@ -28,11 +28,11 @@
           </td>
           <td data-th="Prijs" class="cart-product-price">€{{product.price | number:2}}</td>
           <td data-th="Aantal">
-            <input type="text" class="form-control text-center" value="{{product.quantity}}" readonly>
+            <input type="text" class="form-control text-center shoppingcart-aantal" value="{{product.quantity}}" readonly>
           </td>
           <td data-th="">
-            <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-md"><i class="fa fa-minus"></i></button>
-            <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-md"><i class="fa fa-plus"></i></button>
+            <button ng-click="shoppingCart.removeFromCart(product)" class="btn btn-danger btn-md pointer"><i class="fa fa-minus"></i></button>
+            <button ng-click="shoppingCart.addToCart(product)" class="btn btn-info btn-md pointer"><i class="fa fa-plus"></i></button>
           </td>
         </tr>
         </tbody>
@@ -49,13 +49,12 @@
   </div>
   <div class="row">
     <div class="col-sm-3 col-sm-offset-7">
-      <div class="text-center cart-total-price"><strong>Totaal &euro; {{shoppingCart.totalPrice | number:2}}</strong></div>
+      <div class="text-center cart-total-price"><strong>Totaal {{shoppingCart.totalPrice | currency:'€'}}</strong></div>
     </div>
     <div class="col-sm-2">
       <div ng-show="shoppingCart.cart.length > 0">
-        <a ui-sref="order" class="btn btn-success btn-block">
-          Afrekenen
-          <i class="fa fa-angle-right"></i>
+        <a ui-sref="order" class="btn btn-success btn-block btn-order">
+          Bestellen
         </a>
       </div>
     </div>

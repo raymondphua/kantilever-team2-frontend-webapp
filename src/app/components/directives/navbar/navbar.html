@@ -27,7 +27,7 @@
           <ul class="nav navbar-nav navbar-right header-user">
             <li ng-if="!$root.user"><a ui-sref="login" class="menu-link">Inloggen</a></li>
             <li ng-if="$root.user" id="username"><a class="menu-link no-hover" style="padding-right: 5px;">{{$root.user.email}} </a></li>
-            <li ng-if="$root.user">| <span class="fa fa-sign-out fa-2x" style="padding:15px; padding-left: 5px;" ng-click="vm.logOut()" title="Uitloggen"></span></li>
+            <li ng-if="$root.user" id="logout">| <span class="fa fa-sign-out fa-2x" style="padding:15px; padding-left: 5px;" ng-click="vm.logOut()" title="Uitloggen"></span></li>
             <li><a ng-href="shoppingCart" class="menu-shoppingcart"><shoppingcart></shoppingcart></a></li>
           </ul>
         </div>

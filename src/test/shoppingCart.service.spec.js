@@ -2,6 +2,7 @@ describe('Service shoppingcart', function() {
 
   var cart;
   var shoppingCartService;
+  var $localStorage;
 
   function findProduct(product) {
     var found = null;
@@ -16,10 +17,12 @@ describe('Service shoppingcart', function() {
 
   beforeEach(function() {
     module('feweb');
-    cart = [{id : 1, quantity: 1}, {id: 2, quantity: 1}];
-    inject(function(_ShoppingCartService_) {
+    cart = [{id : 1, quantity: 1, price: 5}, {id: 2, quantity: 1, price: 15}];
+    inject(function(_ShoppingCartService_, _$localStorage_) {
       shoppingCartService = _ShoppingCartService_;
+      $localStorage = _$localStorage_;
     });
+    $localStorage.items = cart;
   });
 
   it('Should add a new product to the cart', function() {
@@ -77,5 +80,62 @@ describe('Service shoppingcart', function() {
 
     //ASSERT
     expect(cart.length).toBe(oldLength - 1);
+  });
+
+  it('Should give the right amount of products in the cart', function() {
+    //ARRANGE
+    var expected = 2;
+
+    //ACT
+    var total = shoppingCartService.getCartProductsTotalItems();
+
+    //ASSERT
+    expect(total).toBe(expected);
+  });
+
+  it('Should clear the cart and have a size of 0', function() {
+    //ARRANGE
+    var expected = 0;
+    var total;
+
+    //ACT
+    shoppingCartService.clearCart();
+    total = $localStorage.items.length;
+
+    //ASSERT
+    expect(total).toBe(expected);
+  });
+
+  it('Get all products should return all products in the cart', function() {
+    //ARRANGE
+    var expected = $localStorage.items;
+
+    //ACT
+    var products = shoppingCartService.getAllCartProducts();
+
+    //ASSERT
+    expect(products).toBe(expected);
+  });
+
+  it('Get total price should get the price of all products in the cart + quantity', function() {
+    //ARRANGE
+    var expected = 20;
+
+    //ACT
+    var totalPrice = shoppingCartService.getCartProductsTotalPrice();
+
+    //ASSERT
+    expect(totalPrice).toBe(expected);
+  });
+
+  it('Get total price should get the price of all products in the cart + quantity and apply the VAT', function() {
+    //ARRANGE
+    var expected = 24.2;
+
+    //ACT
+    var totalPrice = shoppingCartService.getCartProductsTotalPriceIncludingVat();
+
+    //ASSERT
+    expect(totalPrice).toBe(expected);
   });
 });

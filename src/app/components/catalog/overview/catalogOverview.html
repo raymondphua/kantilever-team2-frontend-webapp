@@ -17,10 +17,10 @@
                   <input type="checkbox" name="categoryFilters" ng-model="vm.categoryFilters[category._id]" ng-change="vm.getProducts();">{{category.name}}
                 </label>
                 <div ng-if="vm.categoryFilterLimit <= vm.categoryDefaultFilterLimit && vm.categories.length > vm.categoryFilterLimit">
-                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categories.length">meer..</div>
+                  <div id="category-filter-more" class="filter-more" ng-click="vm.categoryFilterLimit = vm.categories.length">meer..</div>
                 </div>
                 <div ng-if="vm.categoryFilterLimit > vm.categoryDefaultFilterLimit && vm.categoryDefaultFilterLimit < vm.categories.length">
-                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categoryDefaultFilterLimit">minder..</div>
+                  <div id="category-filter-less" class="filter-more" ng-click="vm.categoryFilterLimit = vm.categoryDefaultFilterLimit">minder..</div>
                 </div>
               </div>
 
@@ -33,10 +33,10 @@
                   <input type="checkbox" name="brandFilters" ng-model="vm.brandFilters[brand._id]" ng-change="vm.getProducts();">{{brand.name}}
                 </label>
                 <div ng-if="vm.brandFilterLimit <= vm.brandDefaultFilterLimit && vm.brands.length > vm.brandFilterLimit">
-                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brands.length">meer..</div>
+                  <div id="brand-filter-more" class="filter-more" ng-click="vm.brandFilterLimit = vm.brands.length">meer..</div>
                 </div>
                 <div ng-if="vm.brandFilterLimit > vm.brandDefaultFilterLimit && vm.brandDefaultFilterLimit < vm.brands.length">
-                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brandDefaultFilterLimit">minder..</div>
+                  <div id="brand-filter-less" class="filter-more" ng-click="vm.brandFilterLimit = vm.brandDefaultFilterLimit">minder..</div>
                 </div>
               </div>
 
@@ -62,23 +62,21 @@
                 <div class="breadcrumb"><a ui-sref="home"><span class="fa fa-home"></span></a> <span class="fa fa-chevron-right"></span> catalog</div>
               </div>
 
-              <div ng-repeat="product in vm.listItems.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))" class="col-sm-4"
+              <div ng-repeat="product in vm.listItems" class="col-sm-4"
                    ui-sref="catalog-product({productId: product.id, product: product})">
                 <div class="clearfix" ng-if="$index % 3 == 0"></div>
                 <div class="category">
                   <div class="category-image-container">
-                    <div class="category-image" style="background-image: url('{{product.imgUrl}}')"></div>
+                    <div class="category-image" ng-if="product.imgUrl" style="background-image: url('{{product.imgUrl}}')"></div>
                   </div>
                   <div class="category-name" style="text-align: right">{{product.name}}</div>
                   <div class="category-name" style="text-align: right">{{product.brand.name}}</div>
-                  <div class="product-price" style="float: right">&euro;{{product.price}}</div>
+                  <div class="product-price" style="float: right">{{product.price | currency:'€'}}</div>
                 </div>
               </div>
 
               <div class="col-sm-12">
-                <div class="col-sm-12">
-                  <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
-                </div>
+                <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.getProducts()" class="pagination-sm" items-per-page="vm.itemsPerPage"></uib-pagination>
               </div>
             </div>
           </div>
