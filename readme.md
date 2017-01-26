@@ -13,7 +13,7 @@ Technology
 
 Preview
 ------------
-![websiteimage](store.png?raw=true "Kantilever")
+![image](store.png?raw "Kantilever")
 
 Map structure
 -------------
