@@ -64,9 +64,6 @@
 
         return products;
       }
-      else{
-        return [];
-      }
     }
 
 
