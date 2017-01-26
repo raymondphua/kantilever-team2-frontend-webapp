@@ -20,15 +20,6 @@
       expect(element(by.id('username')).getText()).toEqual('pieter@hotmail.com');
     });
 
-    it('entering invalid username and password should show an error message', function () {
-
-      page.typeUsername("pieter@hotmail.com");
-      page.typePassword("henkie");
-      page.login();
-
-      expect(element(by.id('username')).getText()).toEqual('pieter@hotmail.com');
-    });
-
   });
 
 })();
