@@ -17,10 +17,10 @@
                   <input type="checkbox" name="categoryFilters" ng-model="vm.categoryFilters[category._id]" ng-change="vm.getProducts();">{{category.name}}
                 </label>
                 <div ng-if="vm.categoryFilterLimit <= vm.categoryDefaultFilterLimit && vm.categories.length > vm.categoryFilterLimit">
-                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categories.length">meer..</div>
+                  <div id="category-filter-more" class="filter-more" ng-click="vm.categoryFilterLimit = vm.categories.length">meer..</div>
                 </div>
                 <div ng-if="vm.categoryFilterLimit > vm.categoryDefaultFilterLimit && vm.categoryDefaultFilterLimit < vm.categories.length">
-                  <div class="filter-more" ng-click="vm.categoryFilterLimit = vm.categoryDefaultFilterLimit">minder..</div>
+                  <div id="category-filter-less" class="filter-more" ng-click="vm.categoryFilterLimit = vm.categoryDefaultFilterLimit">minder..</div>
                 </div>
               </div>
 
@@ -33,10 +33,10 @@
                   <input type="checkbox" name="brandFilters" ng-model="vm.brandFilters[brand._id]" ng-change="vm.getProducts();">{{brand.name}}
                 </label>
                 <div ng-if="vm.brandFilterLimit <= vm.brandDefaultFilterLimit && vm.brands.length > vm.brandFilterLimit">
-                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brands.length">meer..</div>
+                  <div id="brand-filter-more" class="filter-more" ng-click="vm.brandFilterLimit = vm.brands.length">meer..</div>
                 </div>
                 <div ng-if="vm.brandFilterLimit > vm.brandDefaultFilterLimit && vm.brandDefaultFilterLimit < vm.brands.length">
-                  <div class="filter-more" ng-click="vm.brandFilterLimit = vm.brandDefaultFilterLimit">minder..</div>
+                  <div id="brand-filter-less" class="filter-more" ng-click="vm.brandFilterLimit = vm.brandDefaultFilterLimit">minder..</div>
                 </div>
               </div>
 
