@@ -9,7 +9,7 @@
   function MainController(CatalogService) {
     var vm = this;
 
-    CatalogService.getAllProducts().$promise.then(function (response) {
+    CatalogService.getAllProducts({page: 0, size: 4}).$promise.then(function (response) {
       vm.products = response.items;
     });
   }
